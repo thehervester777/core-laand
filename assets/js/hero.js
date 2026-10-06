@@ -37,6 +37,7 @@
     const api = {
       intro: { s: 1, a: 1 }, // entrance (scale + alpha)
       scroll: { s: 1 },      // scroll-driven expansion
+      shift: { x: 0, y: 0 }, // pointer parallax offset (driven by fx.js)
     };
     let W = 0, H = 0, dpr = 1, baseCx = 0, baseCy = 0, unit = 1;
     let running = false;
@@ -65,8 +66,8 @@
       if (alpha < 0.01) return;
 
       const s = unit * api.intro.s * api.scroll.s;
-      const cx = baseCx;
-      const cy = baseCy + (gsap.getProperty(dev, 'y') || 0);
+      const cx = baseCx + api.shift.x;
+      const cy = baseCy + api.shift.y + (gsap.getProperty(dev, 'y') || 0);
       const far = Math.hypot(Math.max(cx, W - cx), Math.max(cy, H - cy));
       const inside = cx >= 0 && cx <= W && cy >= 0 && cy <= H;
       const near = inside ? 0 : Math.hypot(Math.max(0, -cx, cx - W), Math.max(0, -cy, cy - H));

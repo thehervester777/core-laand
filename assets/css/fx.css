@@ -1,0 +1,73 @@
+/* =========================================================
+   Core Agency — immersion layer
+   cursor · card tilt + glare · button ripple · ticks · depth
+   Everything here is additive and switched on by assets/js/fx.js.
+   Rules kept from the rest of the page: transforms + opacity only,
+   no backdrop-filter / blend modes over scrolling content,
+   nothing animates while it is off screen.
+   ========================================================= */
+
+/* ---------- cursor ---------- */
+/* The native pointer stays (zero added latency, fully accessible); a soft ring trails it and reacts to what is under it. */
+.fx-cursor {
+  position: fixed; left: 0; top: 0; z-index: 500;
+  width: 0; height: 0; pointer-events: none;
+  opacity: 0; transition: opacity 0.35s var(--e-out);
+  contain: layout style;
+}
+.fx-cursor.is-on { opacity: 1; }
+.fx-cursor.is-hidden { opacity: 0; }
+.fx-cursor__stretch { position: absolute; left: 0; top: 0; width: 0; height: 0; will-change: transform; }
+.fx-cursor__ring {
+  position: absolute; left: -21px; top: -21px; width: 42px; height: 42px; border-radius: 50%;
+  border: 1.5px solid rgba(255, 74, 36, 0.7);
+  background: rgba(255, 74, 36, 0);
+  transform: scale(var(--s, 1));
+  transition: transform 0.55s var(--e-out), background-color 0.4s var(--e-out), border-color 0.4s var(--e-out);
+}
+.fx-cursor.is-link .fx-cursor__ring { --s: 1.55; background: rgba(255, 74, 36, 0.13); border-color: rgba(255, 74, 36, 0.95); }
+.fx-cursor.is-card .fx-cursor__ring { --s: 1.2; border-color: rgba(255, 74, 36, 0.9); }
+.fx-cursor.is-press .fx-cursor__ring { --s: 0.78; background: rgba(255, 74, 36, 0.22); transition-duration: 0.18s; }
+.fx-cursor.is-link.is-press .fx-cursor__ring { --s: 1.2; }
+
+/* ---------- tilt + glare ---------- */
+.fx-tilt { position: relative; overflow: hidden; }
+.fx-glare {
+  position: absolute; left: 0; top: 0; width: 80%; aspect-ratio: 1; margin: -40% 0 0 -40%;
+  border-radius: 50%; pointer-events: none; opacity: 0;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, var(--fx-glare, 0.3)), rgba(255, 255, 255, 0) 100%);
+  transition: opacity 0.55s var(--e-out);
+}
+.fx-tilt.is-hover > .fx-glare { opacity: 1; will-change: transform; }
+.ucard__widget.fx-tilt { --fx-glare: 0.09; }
+.icard__art.fx-tilt { --fx-glare: 0.38; }
+
+/* ---------- button ripple ---------- */
+.fx-ripple {
+  position: absolute; z-index: -1; border-radius: 50%; pointer-events: none;
+  background: currentColor; opacity: 0; will-change: transform, opacity;
+}
+
+/* ---------- curtain depth ----------
+   Each rounded chapter that slides over the previous one casts a soft upward shadow, so the stack reads as layers. */
+.chapter--curtain { box-shadow: 0 -26px 52px -26px rgba(10, 15, 30, 0.34); }
+.chapter--ink.chapter--curtain { box-shadow: 0 -26px 52px -26px rgba(10, 15, 30, 0.5); }
+
+/* ---------- footer wordmark ---------- */
+.footer__word .ch { transform-origin: 50% 100%; }
+
+/* ---------- focus feedback on form fields ---------- */
+.field { transition: transform 0.5s var(--e-out); }
+.field:focus-within { transform: translateY(-2px); }
+.field label { transition: color 0.3s var(--e-out); }
+.field:focus-within label { color: var(--ink); }
+
+/* ---------- touch / reduced motion: none of the pointer effects exist ---------- */
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .fx-cursor { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .field, .field label { transition: none; }
+  .field:focus-within { transform: none; }
+  .chapter--curtain { box-shadow: none; }
+}

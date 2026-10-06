@@ -124,8 +124,10 @@
   };
 
   /* ---------- hero depth ----------
-     The pointer moves five layers by different amounts: orbit rings, grid, glow, floating chips
-     and (already in hero.js) the device. Parallax is what makes the scene read as a space. */
+     The pointer moves four layers by different amounts: orbit rings, glow, floating chips and
+     (already in hero.js) the device. Parallax is what makes the scene read as a space.
+     The dot grid deliberately stays put: it carries a CSS mask, and moving a masked layer forces the
+     compositor to re-mask it on every pointer move (measured: ~1% of frames dropped, nothing else cost anything). */
   const setupHeroDepth = (mm) => {
     const intro = $('.intro');
     const hero = intro && $('.hero', intro);
@@ -134,15 +136,12 @@
       const rings = CA.state && CA.state.rings;
       const chips = $$('[data-chip]', intro);
       const glow = $('.hero__glow', hero);
-      const grid = $('.hero__grid', hero);
 
       if (glow) gsap.set(glow, { xPercent: -50, x: 0 }); // keep its centring resize-safe once GSAP drives it
       const to = (target, prop, dur) => gsap.quickTo(target, prop, { duration: dur, ease: 'power3.out' });
       const chipX = chips.map((c) => to(c, 'x', 1.4));
       const glowX = glow && to(glow, 'x', 1.9);
       const glowY = glow && to(glow, 'y', 1.9);
-      const gridX = grid && to(grid, 'x', 1.6);
-      const gridY = grid && to(grid, 'y', 1.6);
       const ringX = rings && rings.shift ? to(rings.shift, 'x', 1.7) : null;
       const ringY = rings && rings.shift ? to(rings.shift, 'y', 1.7) : null;
       const depth = [-22, 26, -24]; // max ±13px: enough to read as depth, never enough to touch the CTAs
@@ -150,7 +149,6 @@
       const apply = (nx, ny) => {
         chipX.forEach((fn, i) => fn(nx * depth[i % depth.length]));
         if (glowX) { glowX(nx * -70); glowY(ny * -44); }
-        if (gridX) { gridX(nx * 26); gridY(ny * 18); }
         if (ringX) { ringX(nx * -90); ringY(ny * -62); }
       };
       const onMove = (e) => apply(e.clientX / window.innerWidth - 0.5, e.clientY / window.innerHeight - 0.5);
@@ -163,7 +161,6 @@
         hero.removeEventListener('pointerleave', onLeave);
         gsap.set(chips, { x: 0 });
         if (glow) gsap.set(glow, { x: 0, y: 0 });
-        if (grid) gsap.set(grid, { x: 0, y: 0 });
         if (rings && rings.shift) { rings.shift.x = 0; rings.shift.y = 0; }
       };
     });

@@ -91,6 +91,7 @@
     safe('close', () => CA.init.close(mm));       await breathe();
     safe('marquee', () => CA.setupMarquee());
     safe('reveals', () => CA.setupReveals());     await breathe();
+    safe('fx', () => CA.init.fx && CA.init.fx(mm)); await breathe();
     safe('global', () => CA.setupGlobal());
     ScrollTrigger.refresh();
   };

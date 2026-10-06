@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Core Agency — Intelligent cloud POS for Bangladesh</title>
+  <meta name="description" content="Core Agency builds cloud POS for Bangladesh: an offline-first register, bKash and Nagad checkout, NBR VAT invoicing and real-time multi-branch sync for retail, pharmacy, restaurant and distribution businesses.">
+  <meta name="theme-color" content="#F4F2EC">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Core Agency — Intelligent cloud POS for Bangladesh">
+  <meta property="og:description" content="The first-ever POS &amp; Management provider that dares to do what nobody else dares.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <!-- Fraunces: headlines, numerals and the italic accent · Instrument Sans: body and UI -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <!-- Bengali families are limited to one glyph, the taka sign (U+09F3), so ৳ matches the type around it (~11 KB instead of ~290 KB) -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..700&family=Noto+Serif+Bengali:wght@100..700&text=%E0%A7%B3&display=swap" rel="stylesheet">
+
+  <script>document.documentElement.classList.add('js', 'is-loading');</script>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/story.css">
+  <link rel="stylesheet" href="assets/css/solutions.css">
+  <link rel="stylesheet" href="assets/css/proof.css">
+  <link rel="stylesheet" href="assets/css/close.css">
+</head>
+
+<body>
+  <!-- ============ SVG sprite ============ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="logo-mark" viewBox="0 0 32 32">
+        <circle class="lm-ring" cx="16" cy="16" r="11" transform="rotate(-42 16 16)"/>
+        <circle class="lm-dot" cx="16" cy="16" r="4.4"/>
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+      <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+      <symbol id="i-dash" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
+      <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.5 9.2a14.5 14.5 0 0 1 19 0M5.6 12.6a10 10 0 0 1 12.8 0M8.8 16a5.4 5.4 0 0 1 6.4 0"/><path d="M12 19.4h.01"/></symbol>
+      <symbol id="i-barcode" viewBox="0 0 24 24"><path d="M4 6v12M7 6v12M11 6v12M14 6v12M17 6v12M20 6v12"/></symbol>
+      <symbol id="i-printer" viewBox="0 0 24 24"><path d="M7 9V4h10v5M7 17H5a1 1 0 0 1-1-1v-5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a1 1 0 0 1-1 1h-2"/><path d="M7 14h10v6H7z"/></symbol>
+      <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.6-8.96 6 6 0 0 1 11.4 1.9A3.55 3.55 0 0 1 17.5 18.5z"/></symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.6l1.8 4.6-2.3 1.4a11 11 0 0 0 5.9 5.9l1.4-2.3L20 15.4V19a1.6 1.6 0 0 1-1.7 1.6A16 16 0 0 1 3.4 5.7 1.6 1.6 0 0 1 5 4z"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11.3a7 7 0 0 0-14 0C5 15 12 21 12 21z"/><circle cx="12" cy="9.6" r="2.4"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5M12 17.2h.01"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ============ Preloader ============ -->
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <svg class="preloader__mark" viewBox="0 0 64 64" fill="none">
+        <circle class="pl-ring" cx="32" cy="32" r="22" transform="rotate(-42 32 32)"/>
+        <circle class="pl-dot" cx="32" cy="32" r="8.8"/>
+      </svg>
+      <p class="preloader__word"><span>Core</span> <span>Agency</span></p>
+    </div>
+    <div class="preloader__meta">
+      <span>Intelligent cloud POS</span>
+      <span class="preloader__count"><b data-count>00</b>%</span>
+    </div>
+  </div>
+
+  <!-- ============ Header ============ -->
+  <header class="header" data-theme="light">
+    <div class="header__bar">
+      <a class="brand" href="#top" aria-label="Core Agency — back to top">
+        <svg class="brand__mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+        <span class="brand__name">Core Agency</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#industries">Industries</a>
+        <a href="#engine">Engine</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#roi">ROI</a>
+        <a href="#compare">Compare</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--accent btn--sm" href="#demo" data-magnetic data-roll>Book a demo</a>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+          <i></i><i></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu__nav" aria-label="Mobile">
+      <a href="#industries"><span>01</span>Industries</a>
+      <a href="#engine"><span>02</span>Engine modules</a>
+      <a href="#use-cases"><span>03</span>Use cases</a>
+      <a href="#roi"><span>04</span>ROI</a>
+      <a href="#compare"><span>05</span>Compare</a>
+      <a href="#faq"><span>06</span>FAQ</a>
+    </nav>
+    <div class="menu__foot">
+      <a class="btn btn--accent" href="#demo" data-roll>Book a live demo</a>
+      <p><a href="tel:+8801700998877">+880 1700-998877</a><br><a href="mailto:hello@coreagency.com.bd">hello@coreagency.com.bd</a></p>
+    </div>
+  </div>
+
+  <div class="hud" aria-hidden="true">
+    <span class="hud__num"><b>01</b></span>
+    <span class="hud__label"><b>Intro</b></span>
+    <span class="hud__line"><i></i></span>
+  </div>
+
+  <main id="main">
+
+    <!-- ============================================================
+         INTRO SCENE  ·  hero  →  iris  →  philosophy
+         ============================================================ -->
+    <div class="intro" id="top" data-hud="Intro">
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="hero__glow" aria-hidden="true"></div>
+        <canvas class="hero__rings" data-rings aria-hidden="true"></canvas>
+
+        <div class="hero__copy" data-hero-copy>
+          <p class="eyebrow hero__eyebrow"><span class="eyebrow__dot"></span>Intelligent cloud POS · Bangladesh nationwide</p>
+          <h1 class="hero__title" id="hero-title">
+            <span class="ln">The first-ever <span class="nb">POS &amp;</span> Management</span>
+            <span class="ln">provider that dares to do</span>
+            <span class="ln ln--serif"><span class="serif">what nobody else dares.</span></span>
+          </h1>
+          <p class="hero__lead">Industry-specific cloud POS for retail shops, pharmacies, restaurants, apparel stores and distribution networks — one platform that keeps selling offline and reports in real time, from the counter to the head office.</p>
+          <div class="hero__cta">
+            <a class="btn btn--accent btn--lg" href="#demo" data-magnetic data-roll>Book a live demo <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--ghost btn--lg" href="#engine" data-magnetic data-roll>Explore the modules</a>
+          </div>
+        </div>
+
+        <div class="hero__stage">
+          <div class="dev" data-dev>
+            <div class="dev__in" data-dev-in>
+              <div class="device" data-device>
+                <div class="device__ui">
+                  <div class="device__frame">
+                    <div class="pos" data-pos>
+                      <header class="pos__bar">
+                        <div class="pos__id">
+                          <svg class="pos__mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+                          <b>Counter 02</b><i></i><span>Dhaka Main Branch</span>
+                        </div>
+                        <div class="pos__net"><span class="pos__net-dot"></span><span>Online · synced</span></div>
+                      </header>
+
+                      <div class="pos__body">
+                        <section class="pos__cart" aria-label="Cart">
+                          <div class="pos__scan">
+                            <svg class="icon" aria-hidden="true"><use href="#i-barcode"/></svg>
+                            <span>Scan barcode or search item</span>
+                            <i class="pos__caret"></i>
+                            <kbd>F2</kbd>
+                          </div>
+                          <ol class="pos__lines" data-pos-lines>
+                            <li class="pl"><span class="pl__thumb pl__thumb--a">R</span><span class="pl__name"><b>Miniket Rice 5kg</b><small>৳670.00 / unit</small></span><span class="pl__qty">× 2</span><span class="pl__amt">1,340.00</span></li>
+                            <li class="pl"><span class="pl__thumb pl__thumb--b">S</span><span class="pl__name"><b>Soyabean Oil 2L</b><small>৳372.00 / unit</small></span><span class="pl__qty">× 1</span><span class="pl__amt">372.00</span></li>
+                            <li class="pl"><span class="pl__thumb pl__thumb--c">P</span><span class="pl__name"><b>Powder Milk 500g</b><small>৳490.00 / unit</small></span><span class="pl__qty">× 1</span><span class="pl__amt">490.00</span></li>
+                          </ol>
+                        </section>
+
+                        <aside class="pos__pay" aria-label="Payment">
+                          <small class="pos__cap">Total payable</small>
+                          <div class="pos__total"><span>৳</span><b data-pos-total>2,312.10</b></div>
+                          <dl class="pos__sum">
+                            <div><dt>Subtotal</dt><dd data-pos-sub>2,202.00</dd></div>
+                            <div><dt>NBR VAT @ 5%</dt><dd data-pos-vat>110.10</dd></div>
+                          </dl>
+                          <ul class="pos__methods">
+                            <li class="is-on">bKash</li><li>Nagad</li><li>Rocket</li><li>Card</li>
+                          </ul>
+                          <div class="pos__charge" data-pos-charge>Charge ৳ <span data-pos-total-b>2,312.10</span></div>
+                        </aside>
+                      </div>
+
+                      <div class="pos__paid" data-pos-paid>
+                        <span class="pos__paid-ico"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+                        <span><b>Paid · bKash ••7712</b><small>VAT invoice CA-24817 · e-receipt sent by SMS · ধন্যবাদ</small></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="chip chip--a" data-chip>
+                  <span class="chip__ico chip__ico--ok"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+                  <span><b>NBR VAT invoice</b><small>CA-24817 · generated</small></span>
+                </div>
+                <div class="chip chip--b" data-chip>
+                  <span class="chip__ico chip__ico--acc"><svg class="icon" aria-hidden="true"><use href="#i-bolt"/></svg></span>
+                  <span><b>bKash ••7712</b><small>৳2,312.10 · confirmed</small></span>
+                </div>
+                <div class="chip chip--c" data-chip>
+                  <span class="chip__ico chip__ico--ink"><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg></span>
+                  <span><b>16 branches synced</b><small>Last sync 0.3s ago</small></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="intro__iris" data-iris aria-hidden="true"></div>
+
+      <section class="philosophy" id="philosophy" aria-labelledby="philosophy-title">
+        <svg class="philosophy__rings" viewBox="0 0 1400 1400" aria-hidden="true" focusable="false">
+          <circle cx="700" cy="700" r="260"/><circle cx="700" cy="700" r="420"/><circle cx="700" cy="700" r="590"/><circle cx="700" cy="700" r="780"/><circle cx="700" cy="700" r="990"/>
+        </svg>
+        <div class="philosophy__inner">
+          <p class="eyebrow eyebrow--inv"><span class="eyebrow__dot"></span>Core philosophy</p>
+          <h2 class="philosophy__text" id="philosophy-title" data-words>Retail shouldn’t be held back by <em>dropped connections</em> or tangled spreadsheets. We build cloud POS that pairs <em>bulletproof offline speed</em> with <em>real-time financial intelligence</em> — made for the merchants of Bangladesh.</h2>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 1  ·  ink  ·  marquee · numbers · engine
+         ============================================================ -->
+    <div class="chapter chapter--ink" data-theme="dark">
+
+      <section class="marquee" aria-label="Industries we serve" data-hud="Industries served">
+        <div class="marquee__row" data-marquee="-1">
+          <div class="marquee__track">
+            <span>Superstores</span><i></i><span>Pharmacies</span><i></i><span>Restaurants</span><i></i><span>Apparel &amp; Footwear</span><i></i>
+          </div>
+        </div>
+        <div class="marquee__row marquee__row--alt" data-marquee="1">
+          <div class="marquee__track">
+            <span>Bakeries</span><i></i><span>Distribution Depots</span><i></i><span>E-commerce</span><i></i><span>Hardware &amp; Sanitary</span><i></i>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats" id="numbers" aria-label="Core Agency in numbers" data-hud="Numbers">
+        <ul class="stats__grid">
+          <li class="stat" data-reveal>
+            <b class="stat__num" data-count="10000" data-suffix="+">10,000+</b>
+            <span class="stat__label">Active outlets</span>
+            <p>Counters billing on Core Agency, from corner shops to nationwide chains.</p>
+          </li>
+          <li class="stat" data-reveal>
+            <b class="stat__num" data-count="50" data-prefix="৳" data-suffix="B+">৳50B+</b>
+            <span class="stat__label">Sales processed</span>
+            <p>Every taka rung up, reconciled and reported — offline or online.</p>
+          </li>
+          <li class="stat" data-reveal>
+            <b class="stat__num" data-count="99.99" data-decimals="2" data-suffix="%">99.99%</b>
+            <span class="stat__label">Replication uptime</span>
+            <p>Branch data stays in step, even when the connection doesn’t.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="engine" id="engine" aria-labelledby="engine-title" data-engine data-hud="Engine modules">
+        <div class="engine__grid">
+          <div class="engine__copy">
+            <p class="eyebrow eyebrow--inv"><span class="eyebrow__dot"></span>Engine modules</p>
+            <h2 class="h2" id="engine-title" data-split>Powerful modules <span class="serif">for high growth.</span></h2>
+            <p class="lead">A complete cloud management system wrapped in a bulletproof offline register — engineered for the way business actually runs in Bangladesh.</p>
+
+            <ol class="steps" data-steps>
+              <li class="step is-active" data-step="0">
+                <button class="step__head" type="button" aria-expanded="true" aria-controls="step-body-0">
+                  <span class="step__num">01</span><span class="step__title">Dual Mode (Offline POS)</span>
+                </button>
+                <div class="step__body" id="step-body-0"><div>
+                  <p>Local internet down? No problem. Ring up sales, scan items and print tickets fully offline. The system auto-syncs to the cloud the millisecond the connection returns.</p>
+                  <ul class="tags"><li>Offline-first</li><li>Auto-sync</li><li>Zero counter halts</li></ul>
+                </div></div>
+              </li>
+              <li class="step" data-step="1">
+                <button class="step__head" type="button" aria-expanded="false" aria-controls="step-body-1">
+                  <span class="step__num">02</span><span class="step__title">Local MFS Checkout</span>
+                </button>
+                <div class="step__body" id="step-body-1"><div>
+                  <p>Native integration with bKash Merchant API, Nagad, Rocket and Visa/Mastercard. Auto-reconcile every transaction and generate payment confirmation links instantly.</p>
+                  <ul class="tags"><li>bKash</li><li>Nagad</li><li>Rocket</li><li>Cards</li></ul>
+                </div></div>
+              </li>
+              <li class="step" data-step="2">
+                <button class="step__head" type="button" aria-expanded="false" aria-controls="step-body-2">
+                  <span class="step__num">03</span><span class="step__title">Multi-Branch Syncing</span>
+                </button>
+                <div class="step__body" id="step-body-2"><div>
+                  <p>Real-time analytics across every warehouse and outlet in Dhaka, Chittagong, Sylhet and beyond. Monitor sales, transfers and staff shifts remotely.</p>
+                  <ul class="tags"><li>Real-time analytics</li><li>Stock transfers</li><li>Staff shifts</li></ul>
+                </div></div>
+              </li>
+            </ol>
+            <div class="engine__progress" aria-hidden="true"><i data-engine-bar></i></div>
+          </div>
+
+          <div class="engine__visual">
+          <div class="stage" data-stage aria-hidden="true">
+            <div class="stage__frame">
+              <div class="stage__in">
+                <header class="stage__bar">
+                  <div class="stage__where">
+                    <svg class="stage__mark"><use href="#logo-mark"/></svg>
+                    <b>Counter 02</b><i></i><span>Dhaka Main Branch</span>
+                  </div>
+                  <div class="stage__net">
+                    <span class="net net--on"><i></i>Online</span>
+                    <span class="net net--off"><i></i>Offline</span>
+                  </div>
+                </header>
+
+                <div class="stage__panels">
+
+                  <!-- panel 1 · offline -->
+                  <section class="panel panel--offline" data-panel="0" data-label="01 · Dual Mode">
+                    <div class="off__top">
+                      <div class="off__icon">
+                        <svg class="icon off__wifi"><use href="#i-wifi"/></svg>
+                        <span class="off__slash"></span>
+                      </div>
+                      <div class="off__text">
+                        <p class="off__title">
+                          <span class="t t--on">Network connected</span>
+                          <span class="t t--off">Connection lost — still selling</span>
+                          <span class="t t--sync">Back online — syncing</span>
+                        </p>
+                        <p class="off__sub">Tickets are stored on the counter and printed as normal.</p>
+                      </div>
+                    </div>
+                    <ul class="tickets">
+                      <li class="tk"><span class="tk__ico"><svg class="icon"><use href="#i-printer"/></svg></span><span class="tk__id">CA-24818</span><span class="tk__meta">3 items</span><span class="tk__amt">৳1,420.00</span><span class="tk__st"><i class="st st--q">Queued</i><i class="st st--s"><svg class="icon"><use href="#i-check"/></svg>Synced</i></span></li>
+                      <li class="tk"><span class="tk__ico"><svg class="icon"><use href="#i-printer"/></svg></span><span class="tk__id">CA-24819</span><span class="tk__meta">7 items</span><span class="tk__amt">৳3,086.50</span><span class="tk__st"><i class="st st--q">Queued</i><i class="st st--s"><svg class="icon"><use href="#i-check"/></svg>Synced</i></span></li>
+                      <li class="tk"><span class="tk__ico"><svg class="icon"><use href="#i-printer"/></svg></span><span class="tk__id">CA-24820</span><span class="tk__meta">2 items</span><span class="tk__amt">৳640.00</span><span class="tk__st"><i class="st st--q">Queued</i><i class="st st--s"><svg class="icon"><use href="#i-check"/></svg>Synced</i></span></li>
+                    </ul>
+                    <div class="off__cloud">
+                      <svg class="icon"><use href="#i-cloud"/></svg>
+                      <div class="off__bar"><i data-sync-bar></i></div>
+                      <span class="off__count"><b data-sync-count>0</b> of 3 tickets in the cloud</span>
+                    </div>
+                  </section>
+
+                  <!-- panel 2 · checkout -->
+                  <section class="panel panel--pay" data-panel="1" data-label="02 · Local MFS Checkout">
+                    <div class="pay__grid">
+                      <div class="qr">
+                        <div class="qr__code">
+                          <svg class="qr__svg" viewBox="0 0 29 29" shape-rendering="crispEdges" data-qr></svg>
+                          <i class="qr__scan"></i>
+                        </div>
+                        <p>Dynamic QR · <b>৳2,312.10</b></p>
+                      </div>
+                      <div class="pay__side">
+                        <p class="pay__label">Pay with</p>
+                        <ul class="pay__methods">
+                          <li class="pm"><span class="pm__hl"></span><span class="pm__name">bKash</span><i><b></b></i></li>
+                          <li class="pm"><span class="pm__hl"></span><span class="pm__name">Nagad</span><i><b></b></i></li>
+                          <li class="pm"><span class="pm__hl"></span><span class="pm__name">Rocket</span><i><b></b></i></li>
+                          <li class="pm"><span class="pm__hl"></span><span class="pm__name">Visa / Mastercard</span><i><b></b></i></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="pay__results">
+                      <div class="res res--ok">
+                        <span class="res__ico"><svg class="icon"><use href="#i-check"/></svg></span>
+                        <div><b>Payment confirmed</b><small>bKash ••7712 · ৳2,312.10</small></div>
+                        <span class="res__tag">Instant</span>
+                      </div>
+                      <div class="res res--ledger">
+                        <span class="res__ico res__ico--ink"><svg class="icon"><use href="#i-check"/></svg></span>
+                        <div><b>Reconciled to ledger</b><small>Order CA-24817 · NBR VAT ৳110.10</small></div>
+                        <span class="res__tag">Matched</span>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- panel 3 · network -->
+                  <section class="panel panel--net" data-panel="2" data-label="03 · Multi-Branch Syncing">
+                    <div class="net__grid">
+                      <div class="net__map">
+                        <svg class="netsvg" viewBox="0 0 380 420" focusable="false">
+                          <g class="lks">
+                            <line class="lk" x1="199" y1="232" x2="101" y2="54"/>
+                            <line class="lk" x1="199" y1="232" x2="198" y2="145"/>
+                            <line class="lk" x1="199" y1="232" x2="322" y2="131"/>
+                            <line class="lk" x1="199" y1="232" x2="47" y2="180"/>
+                            <line class="lk" x1="199" y1="232" x2="127" y2="323"/>
+                            <line class="lk" x1="199" y1="232" x2="196" y2="334"/>
+                            <line class="lk" x1="199" y1="232" x2="314" y2="365"/>
+                          </g>
+                          <g class="pls">
+                            <line class="pl-l" x1="199" y1="232" x2="101" y2="54" pathLength="1"/>
+                            <line class="pl-l" x1="199" y1="232" x2="198" y2="145" pathLength="1"/>
+                            <line class="pl-l" x1="199" y1="232" x2="322" y2="131" pathLength="1"/>
+                            <line class="pl-l" x1="199" y1="232" x2="47" y2="180" pathLength="1"/>
+                            <line class="pl-l" x1="199" y1="232" x2="127" y2="323" pathLength="1"/>
+                            <line class="pl-l" x1="199" y1="232" x2="196" y2="334" pathLength="1"/>
+                            <line class="pl-l" x1="199" y1="232" x2="314" y2="365" pathLength="1"/>
+                          </g>
+                          <g class="nds">
+                            <g class="nd" transform="translate(101 54)"><circle r="5"/><text x="11" y="4">Rangpur</text></g>
+                            <g class="nd" transform="translate(198 145)"><circle r="5"/><text x="0" y="-11" text-anchor="middle">Mymensingh</text></g>
+                            <g class="nd" transform="translate(322 131)"><circle r="5"/><text x="-11" y="4" text-anchor="end">Sylhet</text></g>
+                            <g class="nd" transform="translate(47 180)"><circle r="5"/><text x="11" y="4">Rajshahi</text></g>
+                            <g class="nd" transform="translate(127 323)"><circle r="5"/><text x="-11" y="4" text-anchor="end">Khulna</text></g>
+                            <g class="nd" transform="translate(196 334)"><circle r="5"/><text x="11" y="4">Barishal</text></g>
+                            <g class="nd" transform="translate(314 365)"><circle r="5"/><text x="-11" y="4" text-anchor="end">Chittagong</text></g>
+                          </g>
+                          <g class="hub" transform="translate(199 232)">
+                            <circle class="hub__halo" r="24"/><circle class="hub__ring" r="15"/><circle class="hub__dot" r="7"/>
+                            <text x="0" y="-30" text-anchor="middle">Dhaka HQ</text>
+                          </g>
+                        </svg>
+                      </div>
+                      <ul class="net__kpis">
+                        <li><small>Revenue today · all branches</small><b data-kpi>৳48,21,340</b></li>
+                        <li><small>Branches reporting</small><b>8 / 8</b></li>
+                        <li><small>Stock transfers in transit</small><b>2</b></li>
+                        <li><small>Staff on shift</small><b>41</b></li>
+                      </ul>
+                    </div>
+                  </section>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stage__dots" data-stage-dots>
+            <button type="button" aria-label="Show Dual Mode (Offline POS)" aria-current="true"></button>
+            <button type="button" aria-label="Show Local MFS Checkout"></button>
+            <button type="button" aria-label="Show Multi-Branch Syncing"></button>
+          </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 2  ·  paper  ·  industries · use cases
+         ============================================================ -->
+    <div class="chapter chapter--paper chapter--curtain" data-theme="light">
+
+      <section class="industries" id="industries" aria-labelledby="industries-title" data-industries data-hud="Industries">
+        <div class="industries__head">
+          <div>
+            <p class="eyebrow"><span class="eyebrow__dot"></span>Industries we serve</p>
+            <h2 class="h2" id="industries-title" data-split>Selected <span class="serif">solutions.</span></h2>
+          </div>
+          <p class="lead">The best POS software and cloud tooling to streamline operations across retail, healthcare, hospitality and distribution.</p>
+        </div>
+
+        <div class="hscroll" data-hscroll>
+          <ul class="hscroll__track" data-track>
+
+            <li class="icard" data-card>
+              <div class="icard__art" aria-hidden="true">
+                <svg viewBox="0 0 400 240" focusable="false">
+                  <defs>
+                    <pattern id="bc1" width="46" height="100" patternUnits="userSpaceOnUse">
+                      <rect x="0" width="3" height="100"/><rect x="6" width="1.5" height="100"/><rect x="10" width="5" height="100"/><rect x="18" width="2" height="100"/><rect x="23" width="1.5" height="100"/><rect x="27" width="4" height="100"/><rect x="34" width="1.5" height="100"/><rect x="38" width="3" height="100"/>
+                    </pattern>
+                  </defs>
+                  <rect class="a-card" x="78" y="44" width="244" height="152" rx="16"/>
+                  <rect class="a-ink" x="106" y="72" width="188" height="78" fill="url(#bc1)"/>
+                  <rect class="a-soft" x="106" y="162" width="92" height="8" rx="4"/>
+                  <rect class="a-soft" x="206" y="162" width="52" height="8" rx="4"/>
+                  <rect class="a-beam-glow" data-beam x="94" y="63" width="212" height="17" rx="8.5"/>
+                  <rect class="a-beam" data-beam x="94" y="70" width="212" height="3" rx="1.5"/>
+                  <g transform="rotate(10 300 62)"><rect class="a-acc" x="262" y="40" width="74" height="34" rx="8"/><text class="a-txt a-txt--inv" x="299" y="62" text-anchor="middle">৳ 372</text></g>
+                </svg>
+              </div>
+              <div class="icard__meta"><span class="icard__no">01</span><span class="tag">Retail</span></div>
+              <h3>Supershop Software</h3>
+              <p>Double register lanes, barcode scanners and digital scale sync.</p>
+            </li>
+
+            <li class="icard" data-card>
+              <div class="icard__art" aria-hidden="true">
+                <svg viewBox="0 0 400 240" focusable="false">
+                  <rect class="a-card" x="70" y="62" width="260" height="124" rx="18"/>
+                  <g class="a-cells">
+                    <circle class="a-cell" cx="112" cy="102" r="17"/><circle class="a-cell" cx="168" cy="102" r="17"/><circle class="a-cell" cx="224" cy="102" r="17"/><circle class="a-cell" cx="280" cy="102" r="17"/>
+                    <circle class="a-cell" cx="112" cy="148" r="17"/><circle class="a-cell a-cell--empty" cx="168" cy="148" r="17"/><circle class="a-cell" cx="224" cy="148" r="17"/><circle class="a-cell a-cell--empty" cx="280" cy="148" r="17"/>
+                  </g>
+                  <g class="a-caps" data-bob>
+                    <g transform="rotate(-38 112 102)"><rect class="a-white-s" x="94" y="94" width="36" height="16" rx="8"/><path class="a-acc" d="M112 94h10a8 8 0 0 1 0 16h-10z"/></g>
+                    <g transform="rotate(30 168 102)"><rect class="a-white-s" x="150" y="94" width="36" height="16" rx="8"/><path class="a-ink" d="M168 94h10a8 8 0 0 1 0 16h-10z"/></g>
+                    <g transform="rotate(-20 224 102)"><rect class="a-white-s" x="206" y="94" width="36" height="16" rx="8"/><path class="a-acc" d="M224 94h10a8 8 0 0 1 0 16h-10z"/></g>
+                    <g transform="rotate(48 280 102)"><rect class="a-white-s" x="262" y="94" width="36" height="16" rx="8"/><path class="a-ink" d="M280 94h10a8 8 0 0 1 0 16h-10z"/></g>
+                    <g transform="rotate(14 112 148)"><rect class="a-white-s" x="94" y="140" width="36" height="16" rx="8"/><path class="a-acc" d="M112 140h10a8 8 0 0 1 0 16h-10z"/></g>
+                    <g transform="rotate(-52 224 148)"><rect class="a-white-s" x="206" y="140" width="36" height="16" rx="8"/><path class="a-ink" d="M224 140h10a8 8 0 0 1 0 16h-10z"/></g>
+                  </g>
+                  <g transform="translate(250 40)"><rect class="a-ink" width="96" height="30" rx="15"/><text class="a-txt a-txt--inv" x="48" y="20" text-anchor="middle">EXP · 30 days</text></g>
+                </svg>
+              </div>
+              <div class="icard__meta"><span class="icard__no">02</span><span class="tag">Pharma</span></div>
+              <h3>Pharmacy Management</h3>
+              <p>20,000+ drug indices, batch expiry tracking and NBR BIN.</p>
+            </li>
+
+            <li class="icard" data-card>
+              <div class="icard__art" aria-hidden="true">
+                <svg viewBox="0 0 400 240" focusable="false">
+                  <circle class="a-card" cx="168" cy="124" r="76"/>
+                  <circle class="a-ring" cx="168" cy="124" r="54"/>
+                  <circle class="a-acc a-breathe" cx="168" cy="124" r="22"/>
+                  <path class="a-line" d="M66 76v34a10 10 0 0 0 20 0V76M76 76v90"/>
+                  <path class="a-line" d="M262 76c14 8 18 28 8 46v44M270 122h-8"/>
+                  <g transform="rotate(4 322 112)">
+                    <path class="a-card" d="M286 60h74v124l-6-5-6 5-6-5-6 5-6-5-6 5-6-5-6 5-6-5-6 5z"/>
+                    <rect class="a-ink" x="298" y="76" width="22" height="5" rx="2.5"/>
+                    <rect class="a-soft" x="298" y="92" width="50" height="5" rx="2.5"/><rect class="a-soft" x="298" y="106" width="42" height="5" rx="2.5"/><rect class="a-soft" x="298" y="120" width="48" height="5" rx="2.5"/>
+                    <rect class="a-acc" x="298" y="140" width="30" height="14" rx="7"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="icard__meta"><span class="icard__no">03</span><span class="tag">Dining</span></div>
+              <h3>Restaurant POS</h3>
+              <p>Kitchen display tickets (KOT), table layout and check splits.</p>
+            </li>
+
+            <li class="icard" data-card>
+              <div class="icard__art" aria-hidden="true">
+                <svg viewBox="0 0 400 240" focusable="false">
+                  <path class="a-card" d="M120 28h160v176l-13.3-9-13.4 9-13.3-9-13.3 9-13.4-9-13.3 9-13.3-9-13.4 9-13.3-9-13.3 9z"/>
+                  <rect class="a-ink" x="146" y="54" width="52" height="7" rx="3.5"/>
+                  <rect class="a-soft" x="146" y="76" width="108" height="6" rx="3"/><rect class="a-soft" x="146" y="92" width="96" height="6" rx="3"/><rect class="a-soft" x="146" y="108" width="104" height="6" rx="3"/>
+                  <rect class="a-soft" x="146" y="132" width="108" height="6" rx="3"/>
+                  <g transform="translate(262 150)"><g class="a-wobble"><circle class="a-acc" r="38"/><circle class="a-ring a-ring--inv" r="31"/><text class="a-txt a-txt--xl a-txt--inv" x="0" y="9" text-anchor="middle">5%</text></g></g>
+                  <g transform="translate(46 56)"><rect class="a-ink" width="70" height="26" rx="13"/><text class="a-txt a-txt--inv" x="35" y="18" text-anchor="middle">BIN ✓</text></g>
+                </svg>
+              </div>
+              <div class="icard__meta"><span class="icard__no">04</span><span class="tag">NBR Tax</span></div>
+              <h3>VAT &amp; Tax Invoicing</h3>
+              <p>NBR-compliant sales tax engine and automatic monthly schedules.</p>
+            </li>
+
+            <li class="icard" data-card>
+              <div class="icard__art" aria-hidden="true">
+                <svg viewBox="0 0 400 240" focusable="false">
+                  <g transform="translate(46 70)">
+                    <rect class="a-card" x="0" y="34" width="104" height="78" rx="8"/>
+                    <path class="a-ink" d="M-6 34 6 6h92l12 28z"/>
+                    <path class="a-line a-line--inv" d="M24 6v28M52 6v28M80 6v28"/>
+                    <rect class="a-acc" x="38" y="68" width="28" height="44" rx="4"/>
+                  </g>
+                  <g transform="translate(246 58)">
+                    <rect class="a-card" width="112" height="98" rx="10"/>
+                    <path class="a-ink" d="M0 10a10 10 0 0 1 10-10h92a10 10 0 0 1 10 10v14H0z"/>
+                    <circle class="a-dot-w" cx="13" cy="12" r="3"/><circle class="a-dot-w" cx="25" cy="12" r="3"/>
+                    <rect class="a-soft" x="14" y="38" width="84" height="8" rx="4"/><rect class="a-soft" x="14" y="54" width="60" height="8" rx="4"/><rect class="a-acc" x="14" y="72" width="38" height="12" rx="6"/>
+                  </g>
+                  <g class="a-spin" data-spin>
+                    <path class="a-line a-line--acc" d="M176 108a28 28 0 0 1 46-12"/><path class="a-line a-line--acc" d="m224 82-2 14-14-2"/>
+                    <path class="a-line a-line--acc" d="M224 132a28 28 0 0 1-46 12"/><path class="a-line a-line--acc" d="m176 158 2-14 14 2"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="icard__meta"><span class="icard__no">05</span><span class="tag">Omni</span></div>
+              <h3>E-commerce Sync</h3>
+              <p>Live inventory sync for WooCommerce, Shopify and your outlets.</p>
+            </li>
+
+            <li class="icard" data-card>
+              <div class="icard__art" aria-hidden="true">
+                <svg viewBox="0 0 400 240" focusable="false">
+                  <path class="a-card" d="M138 54 164 38c10 14 26 22 36 22s26-8 36-22l26 16 36 34-28 24-14-12v94H144v-94l-14 12-28-24z"/>
+                  <path class="a-ring" d="M164 38c10 14 26 22 36 22s26-8 36-22"/>
+                  <g data-sizes>
+                    <rect class="a-chip" x="150" y="192" width="30" height="24" rx="8"/><text class="a-txt" x="165" y="208" text-anchor="middle">S</text>
+                    <rect class="a-chip a-chip--on" x="186" y="192" width="30" height="24" rx="8"/><text class="a-txt a-txt--inv" x="201" y="208" text-anchor="middle">M</text>
+                    <rect class="a-chip" x="222" y="192" width="30" height="24" rx="8"/><text class="a-txt" x="237" y="208" text-anchor="middle">L</text>
+                  </g>
+                  <circle class="a-acc" cx="318" cy="76" r="13"/><circle class="a-ink" cx="318" cy="112" r="13"/><circle class="a-ring" cx="318" cy="148" r="12"/>
+                  <g transform="translate(60 86)"><rect class="a-ink" width="64" height="26" rx="13"/><text class="a-txt a-txt--inv" x="32" y="18" text-anchor="middle">+120 pts</text></g>
+                </svg>
+              </div>
+              <div class="icard__meta"><span class="icard__no">06</span><span class="tag">Fashion</span></div>
+              <h3>Apparel &amp; Footwear</h3>
+              <p>Colour and size matrices, customer reward points and tags.</p>
+            </li>
+
+            <li class="icard" data-card>
+              <div class="icard__art" aria-hidden="true">
+                <svg viewBox="0 0 400 240" focusable="false">
+                  <path id="route-a" class="a-route" d="M80 164C140 164 150 96 206 96S270 164 322 164"/>
+                  <g transform="translate(40 144)"><rect class="a-card" width="62" height="46" rx="8"/><path class="a-ink" d="M-4 6 31-14l35 20z"/><rect class="a-acc" x="22" y="22" width="18" height="24" rx="3"/></g>
+                  <g transform="translate(298 144)"><rect class="a-card" width="62" height="46" rx="8"/><path class="a-ink" d="M-4 6 31-14l35 20z"/><rect class="a-acc" x="22" y="22" width="18" height="24" rx="3"/></g>
+                  <g transform="translate(174 40)"><rect class="a-ink" width="64" height="26" rx="13"/><text class="a-txt a-txt--inv" x="32" y="18" text-anchor="middle">In transit</text></g>
+                  <g data-truck><rect class="a-acc" x="-15" y="-10" width="22" height="16" rx="3"/><path class="a-ink" d="M7-6h8l4 6v6H7z"/><circle class="a-dot-w a-dot-w--s" cx="-7" cy="8" r="3.4"/><circle class="a-dot-w a-dot-w--s" cx="11" cy="8" r="3.4"/></g>
+                </svg>
+              </div>
+              <div class="icard__meta"><span class="icard__no">07</span><span class="tag">Wholesale</span></div>
+              <h3>Distribution ERP</h3>
+              <p>Multi-warehouse logistics, truck delivery and dealer credit limits.</p>
+            </li>
+
+            <li class="icard icard--cta" data-card>
+              <div class="icard__cta-in">
+                <p class="eyebrow eyebrow--inv"><span class="eyebrow__dot"></span>Something else?</p>
+                <h3>Running a different kind of business?</h3>
+                <p>Bakeries, hardware and sanitary, e-commerce: tell us how you sell and we’ll configure the terminal around it.</p>
+                <a class="btn btn--accent" href="#demo" data-roll>Talk to us <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="industries__foot" aria-hidden="true">
+          <span class="industries__count"><b data-h-current>01</b> / 07</span>
+          <span class="industries__bar"><i data-h-bar></i></span>
+          <span class="industries__hint">Keep scrolling</span>
+        </div>
+      </section>
+
+      <section class="usecases" id="use-cases" aria-labelledby="usecases-title" data-hud="Use cases">
+        <div class="usecases__head">
+          <p class="eyebrow"><span class="eyebrow__dot"></span>Operations use cases</p>
+          <h2 class="h2" id="usecases-title" data-split>Engineered for your <span class="serif">business profile.</span></h2>
+          <p class="lead">See how Core Agency POS handles the day-to-day operational challenges of your specific growth stage.</p>
+        </div>
+
+        <div class="stack" data-stack>
+
+          <!-- retail -->
+          <article class="ucard" data-ucard style="--i:0">
+            <div class="ucard__copy">
+              <span class="ucard__kicker"><b>01</b> Retail</span>
+              <h3>Preventing retail <span class="serif">stock leakage.</span></h3>
+              <p>Corner stores and grocery superstores leak an average of <b>4.5% of revenue</b> from unrecorded inventory sales and cash-register discrepancies. Core Agency POS provides real-time stock alerts and barcode scans to lock inventory down.</p>
+              <ul class="checks">
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Auto-triggers warnings when inventory thresholds dip.</li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Compiles daily ledger reconciliations against cash-drawer counts.</li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Uploads bulk inventory items via CSV templates.</li>
+              </ul>
+            </div>
+            <div class="ucard__widget">
+              <div class="wg" data-widget="stock">
+                <div class="wg__head"><span>Live terminal · inventory alerts</span><span class="wg__live"><i></i>watching</span></div>
+                <ul class="wg__list">
+                  <li class="srow" data-stock="2" data-max="60">
+                    <div class="srow__main"><b>Miniket Rice 5kg</b><small>Aisle 2 · Rack 04</small></div>
+                    <div class="srow__bar"><i></i></div>
+                    <span class="badge badge--bad"><span data-badge>Low stock: <b data-n>2</b> left</span></span>
+                  </li>
+                  <li class="srow" data-stock="48" data-max="60">
+                    <div class="srow__main"><b>Soyabean Oil 2L</b><small>Aisle 3 · Rack 01</small></div>
+                    <div class="srow__bar"><i></i></div>
+                    <span class="badge badge--ok"><span data-badge>Stock: <b data-n>48</b> left</span></span>
+                  </li>
+                  <li class="srow" data-stock="1" data-max="60">
+                    <div class="srow__main"><b>Powder Milk 500g</b><small>Aisle 1 · Rack 07</small></div>
+                    <div class="srow__bar"><i></i></div>
+                    <span class="badge badge--bad"><span data-badge>Low stock: <b data-n>1</b> left</span></span>
+                  </li>
+                </ul>
+                <div class="wg__toast" data-toast><svg class="icon"><use href="#i-bolt"/></svg><span>Reorder alert sent · <b>Miniket Rice 5kg</b></span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- pharmacy -->
+          <article class="ucard" data-ucard style="--i:1">
+            <div class="ucard__copy">
+              <span class="ucard__kicker"><b>02</b> Pharmacy</span>
+              <h3>Drug expiry &amp; <span class="serif">batch compliance.</span></h3>
+              <p>Selling expired medicine or violating NBR VAT templates risks store closure. Core Agency pre-loads <b>20,000+ local drug indices</b>, maps shelf coordinates and warns cashiers weeks before drugs expire.</p>
+              <ul class="checks">
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Flags expiring medicine batches during scanner checkout.</li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Cross-indexes drug generics in search registers.</li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Automatically adds batch BIN codes onto invoices.</li>
+              </ul>
+            </div>
+            <div class="ucard__widget">
+              <div class="wg" data-widget="expiry">
+                <div class="wg__head"><span>Automated expiry monitor</span><span class="wg__live wg__live--muted">20,000+ drug index</span></div>
+                <ul class="wg__list">
+                  <li class="erow" data-days="30">
+                    <div class="erow__top"><div class="srow__main"><b>Napa Extend <em>(Batch A)</em></b><small>EXP: NOV 2026</small></div><span class="badge badge--bad">Critical · 30 days</span></div>
+                    <div class="erow__bar"><i style="--w:.12"></i></div>
+                  </li>
+                  <li class="erow" data-days="120">
+                    <div class="erow__top"><div class="srow__main"><b>Sergel 20mg <em>(Batch C)</em></b><small>EXP: FEB 2027</small></div><span class="badge badge--warn">Warning · 120 days</span></div>
+                    <div class="erow__bar"><i style="--w:.42"></i></div>
+                  </li>
+                </ul>
+                <div class="wg__toast wg__toast--warn" data-toast><svg class="icon"><use href="#i-alert"/></svg><span>Scanner check-out: <b>Batch A</b> expires in 30 days — confirm sale?</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- restaurant -->
+          <article class="ucard" data-ucard style="--i:2">
+            <div class="ucard__copy">
+              <span class="ucard__kicker"><b>03</b> Restaurant</span>
+              <h3>Kitchen tickets &amp; <span class="serif">table dispatch.</span></h3>
+              <p>Mismanaged dine-in tables mean long delays and cold food. An interactive tablet seating grid lets waiters map tables, dispatch print tickets to different kitchen stations and split final checks.</p>
+              <ul class="checks">
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Real-time dining-table occupancy tracking.</li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Split-bill check calculations.</li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Automates raw-ingredient conversions per recipe sale.</li>
+              </ul>
+            </div>
+            <div class="ucard__widget">
+              <div class="wg" data-widget="floor">
+                <div class="wg__head"><span>Floor seating layout</span><span class="wg__occ">Occupied: <b data-occ>2</b>/6</span></div>
+                <div class="floor" role="group" aria-label="Table occupancy (interactive demo)">
+                  <button class="tbl tbl--round is-on" type="button" aria-pressed="true" style="--x:8%;--y:10%"><b>T1</b><small>Occupied</small></button>
+                  <button class="tbl tbl--sq" type="button" aria-pressed="false" style="--x:38%;--y:6%"><b>T2</b><small>Available</small></button>
+                  <button class="tbl tbl--round is-on" type="button" aria-pressed="true" style="--x:68%;--y:10%"><b>T3</b><small>Occupied</small></button>
+                  <button class="tbl tbl--sq" type="button" aria-pressed="false" style="--x:8%;--y:54%"><b>T4</b><small>Available</small></button>
+                  <button class="tbl tbl--round" type="button" aria-pressed="false" style="--x:38%;--y:58%"><b>T5</b><small>Available</small></button>
+                  <button class="tbl tbl--sq" type="button" aria-pressed="false" style="--x:68%;--y:54%"><b>T6</b><small>Available</small></button>
+                </div>
+                <p class="wg__hint">Click tables to toggle simulated occupancy status</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- distribution -->
+          <article class="ucard" data-ucard style="--i:3">
+            <div class="ucard__copy">
+              <span class="ucard__kicker"><b>04</b> Wholesale</span>
+              <h3>Inter-branch <span class="serif">stock distribution.</span></h3>
+              <p>Operating multiple warehouse hubs without synchronisation causes massive transit delays and dead inventory. Core Agency tracks items in transit, checks credit limits for wholesale dealers and manages delivery trucks.</p>
+              <ul class="checks">
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Coordinates truck-routing transfer logs.</li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Adjusts credit balance limits for wholesale dealers.</li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Logs supplier purchase-ledger timelines.</li>
+              </ul>
+            </div>
+            <div class="ucard__widget">
+              <div class="wg" data-widget="transit">
+                <div class="wg__head"><span>Warehouse transit logs</span><span class="wg__live"><i></i><b data-transit-n>2</b> in transit</span></div>
+                <ul class="wg__list">
+                  <li class="trow" data-pct="40">
+                    <div class="trow__top"><b>Dhaka HQ <svg class="icon"><use href="#i-arrow"/></svg> Sylhet Depot</b><span data-pct-label>40%</span></div>
+                    <div class="trow__track"><i data-fill></i><span class="trow__truck" data-truck><svg class="icon"><use href="#i-truck"/></svg></span></div>
+                    <small>Truck DH-11-4821 · 38 cartons · ETA 4h 10m</small>
+                  </li>
+                  <li class="trow" data-pct="85">
+                    <div class="trow__top"><b>Dhaka HQ <svg class="icon"><use href="#i-arrow"/></svg> Ctg Central</b><span data-pct-label>85%</span></div>
+                    <div class="trow__track"><i data-fill></i><span class="trow__truck" data-truck><svg class="icon"><use href="#i-truck"/></svg></span></div>
+                    <small>Truck CH-14-0977 · 64 cartons · ETA 55m</small>
+                  </li>
+                </ul>
+                <div class="wg__foot"><span>Dealer credit limit check</span><b class="badge badge--ok">Within limit</b></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 3  ·  ink  ·  ROI · compare
+         ============================================================ -->
+    <div class="chapter chapter--ink chapter--curtain" data-theme="dark">
+
+      <section class="roi" id="roi" aria-labelledby="roi-title" data-hud="ROI estimator">
+        <div class="roi__wrap">
+          <div class="roi__copy">
+            <p class="eyebrow eyebrow--inv"><span class="eyebrow__dot"></span>ROI estimator</p>
+            <h2 class="h2" id="roi-title" data-split>Calculate what your store <span class="serif">gets back.</span></h2>
+            <p class="lead">Manual billing and unrecorded stock checks leak revenue every day. Slide to your shop size and see how much cash loss Core Agency POS stops.</p>
+            <ul class="ticks">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Eliminates inventory shrinkage from misplaced stock</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Cuts cashier billing time and customer wait-lines</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Automates bookkeeping logs to stop leakage on paper</li>
+            </ul>
+          </div>
+
+          <div class="roi__card" data-roi>
+            <div class="roi__top">
+              <label class="roi__label" for="roi-range">Your store’s monthly sales</label>
+              <output class="roi__value" for="roi-range" data-roi-value>৳2,50,000</output>
+            </div>
+            <input class="range" id="roi-range" type="range" min="50000" max="2000000" step="10000" value="250000" aria-describedby="roi-note">
+            <div class="roi__scale" aria-hidden="true"><span>৳50,000</span><span>৳20,00,000</span></div>
+
+            <div class="roi__metrics">
+              <div class="metric metric--lead">
+                <small>Est. revenue loss prevented</small>
+                <b><span data-roi-loss>৳11,250</span><em>/mo</em></b>
+              </div>
+              <div class="metric">
+                <small>Counter capacity gained</small>
+                <b><span data-roi-cap>+12%</span></b>
+              </div>
+              <div class="metric">
+                <small>Admin hours reclaimed</small>
+                <b><span data-roi-hours>28</span><em> hrs/mo</em></b>
+              </div>
+            </div>
+
+            <div class="roi__chart">
+              <div class="roi__chart-head"><span>Recovered over 12 months</span><b data-roi-year>৳1,35,000</b></div>
+              <div class="bars" data-bars aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <div class="bars__axis" aria-hidden="true"><span>Month 1</span><span>Month 12</span></div>
+            </div>
+            <p class="roi__note" id="roi-note">Based on an observed 4.5% average revenue leakage from unrecorded stock and cash-register discrepancies. Indicative only — your audit will differ.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="compare" id="compare" aria-labelledby="compare-title" data-hud="Compare">
+        <div class="compare__head">
+          <div>
+            <p class="eyebrow eyebrow--inv"><span class="eyebrow__dot"></span>Market leader</p>
+            <h2 class="h2" id="compare-title" data-split>How we redefine <span class="serif">POS management.</span></h2>
+          </div>
+          <p class="lead">See why major pharmacies, superstores and expanding restaurants in Bangladesh are ditching traditional registers for Core Agency.</p>
+        </div>
+
+        <div class="cmp-scroll">
+          <div class="cmp-wrap" data-cmp>
+            <div class="cmp__hl" data-cmp-hl aria-hidden="true"></div>
+            <table class="cmp">
+              <caption class="sr-only">Core Agency cloud POS compared with legacy desktop POS and manual bookkeeping</caption>
+              <colgroup><col style="width:28%"><col style="width:27%"><col style="width:23%"><col style="width:22%"></colgroup>
+              <thead>
+                <tr><th scope="col">Management capability</th><th scope="col" class="cmp__core">Core Agency Cloud POS</th><th scope="col">Legacy desktop POS</th><th scope="col">Manual bookkeeping</th></tr>
+              </thead>
+              <tbody>
+                <tr data-row>
+                  <th scope="row">Offline-to-cloud syncing</th>
+                  <td class="cmp__core" data-label="Core Agency"><span class="mk mk--yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Real-time, auto-resume</td>
+                  <td data-label="Legacy desktop POS"><span class="mk mk--part"><svg class="icon" aria-hidden="true"><use href="#i-dash"/></svg></span>Manual backup only</td>
+                  <td data-label="Manual bookkeeping"><span class="mk mk--no"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>None</td>
+                </tr>
+                <tr data-row>
+                  <th scope="row">Integrated mobile finance (bKash / Nagad)</th>
+                  <td class="cmp__core" data-label="Core Agency"><span class="mk mk--yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Dynamic API QR &amp; auto-confirm</td>
+                  <td data-label="Legacy desktop POS"><span class="mk mk--part"><svg class="icon" aria-hidden="true"><use href="#i-dash"/></svg></span>Manual verification</td>
+                  <td data-label="Manual bookkeeping"><span class="mk mk--no"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Manual ledger entry</td>
+                </tr>
+                <tr data-row>
+                  <th scope="row">Auto SMS receipt &amp; alerts</th>
+                  <td class="cmp__core" data-label="Core Agency"><span class="mk mk--yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Standard (BD gateways)</td>
+                  <td data-label="Legacy desktop POS"><span class="mk mk--part"><svg class="icon" aria-hidden="true"><use href="#i-dash"/></svg></span>Add-on cost (complex)</td>
+                  <td data-label="Manual bookkeeping"><span class="mk mk--no"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>None</td>
+                </tr>
+                <tr data-row>
+                  <th scope="row">NBR-compliant VAT receipts</th>
+                  <td class="cmp__core" data-label="Core Agency"><span class="mk mk--yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Fully configured</td>
+                  <td data-label="Legacy desktop POS"><span class="mk mk--part"><svg class="icon" aria-hidden="true"><use href="#i-dash"/></svg></span>Configurable</td>
+                  <td data-label="Manual bookkeeping"><span class="mk mk--no"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Highly prone to errors</td>
+                </tr>
+                <tr data-row>
+                  <th scope="row">Multi-branch warehouse tracking</th>
+                  <td class="cmp__core" data-label="Core Agency"><span class="mk mk--yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Integrated central hub</td>
+                  <td data-label="Legacy desktop POS"><span class="mk mk--part"><svg class="icon" aria-hidden="true"><use href="#i-dash"/></svg></span>Separate databases</td>
+                  <td data-label="Manual bookkeeping"><span class="mk mk--no"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Impossible to scale</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p class="compare__hint">← Scroll horizontally to compare →</p>
+      </section>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 4  ·  paper  ·  voices · faq
+         ============================================================ -->
+    <div class="chapter chapter--paper chapter--curtain" data-theme="light">
+
+      <section class="voices" id="voices" aria-labelledby="voices-title" data-hud="Client voices">
+        <div class="voices__side">
+          <div class="voices__sticky">
+            <p class="eyebrow"><span class="eyebrow__dot"></span>Client voices</p>
+            <h2 class="h2" id="voices-title" data-split>Trusted at <span class="serif">every counter.</span></h2>
+            <p class="lead">From pharmacy chains in Dhaka to dining groups in Gulshan, operators say the same thing: the till never stops, and the numbers always add up.</p>
+            <div class="voices__count" aria-hidden="true"><b data-q-current>01</b><span>/ 03</span></div>
+          </div>
+        </div>
+
+        <div class="voices__list">
+          <figure class="quote" data-quote>
+            <blockquote><p>“The dual-mode offline checkout ensures zero counter halts during network outages, while drug expiry batch warnings saved us lakhs in preventable medicine losses.”</p></blockquote>
+            <figcaption><span class="quote__no">01</span><span><b>Head of Operations</b><small>Major Healthcare &amp; Pharmacy Chain, Dhaka</small></span></figcaption>
+          </figure>
+          <figure class="quote" data-quote>
+            <blockquote><p>“Reconciling bKash and card settlements across 16 branches used to require days of manual bookwork. With Core Agency, daily audit and NBR VAT reports are instantaneous.”</p></blockquote>
+            <figcaption><span class="quote__no">02</span><span><b>Retail Operations Director</b><small>Superstore &amp; Grocery Network, Chittagong</small></span></figcaption>
+          </figure>
+          <figure class="quote" data-quote>
+            <blockquote><p>“Kitchen display ticketing (KOT) and table seat mapping cut down our dinner rush order turnaround time by 40%.”</p></blockquote>
+            <figcaption><span class="quote__no">03</span><span><b>Managing Partner</b><small>Casual Dining &amp; Restaurant Group, Gulshan</small></span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="faq" id="faq" aria-labelledby="faq-title" data-hud="FAQ">
+        <div class="faq__side">
+          <p class="eyebrow"><span class="eyebrow__dot"></span>FAQ</p>
+          <h2 class="h2" id="faq-title" data-split>Frequently <span class="serif">asked.</span></h2>
+          <p class="lead">Answers to common questions about our cloud POS architecture, offline engine, NBR tax compliance and local deployment across Bangladesh.</p>
+          <div class="faq__ask">
+            <small>Still have questions?</small>
+            <a class="link" href="#demo" data-roll>Ask us anything <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+
+        <div class="acc" data-acc>
+          <div class="acc__item is-open" data-reveal>
+            <h3><button class="acc__q" type="button" aria-expanded="true" aria-controls="faq-a1" id="faq-q1"><span>How does offline mode work when the internet drops?</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__a" id="faq-a1" role="region" aria-labelledby="faq-q1"><div><p>Our Dual Mode engine means zero counter downtime. Cashiers keep scanning barcodes, ringing up sales and printing receipts locally. The moment your connection returns, every offline ticket uploads and reconciles with your cloud dashboard automatically.</p></div></div>
+          </div>
+          <div class="acc__item" data-reveal>
+            <h3><button class="acc__q" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2"><span>Is Core Agency POS aligned with Bangladesh NBR VAT rules?</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Yes. The built-in sales-tax module is aligned with National Board of Revenue (NBR) standards. It prints verified tax receipts carrying your store BIN, computes the standard 5% retail VAT rate, and exports audit-ready monthly tax schedules.</p></div></div>
+          </div>
+          <div class="acc__item" data-reveal>
+            <h3><button class="acc__q" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3"><span>Can we accept bKash and Nagad payments directly at the counter?</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>Absolutely. Core Agency has native integrations with bKash Merchant and Nagad. The register shows a dynamic QR on the customer-facing screen, verifies the payment in real time, and auto-reconciles balances into your bookkeeping ledger.</p></div></div>
+          </div>
+          <div class="acc__item" data-reveal>
+            <h3><button class="acc__q" type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4"><span>How does multi-branch and warehouse stock syncing work?</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__a" id="faq-a4" role="region" aria-labelledby="faq-q4"><div><p>Every branch terminal — Dhaka, Chittagong, Sylhet and nationwide — talks to one central cloud database. Track inventory across outlets, dispatch inter-branch transfers, monitor cashier cash-drawer floats and review consolidated revenue remotely.</p></div></div>
+          </div>
+          <div class="acc__item" data-reveal>
+            <h3><button class="acc__q" type="button" aria-expanded="false" aria-controls="faq-a5" id="faq-q5"><span>What hardware is compatible with Core Agency POS?</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__a" id="faq-a5" role="region" aria-labelledby="faq-q5"><div><p>The platform is completely hardware-agnostic. It pairs with ESC/POS thermal receipt printers (58mm and 80mm), 1D/2D wireless barcode scanners, customer-facing secondary monitors and digital weighing scales.</p></div></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 5  ·  ink  ·  demo
+         ============================================================ -->
+    <div class="chapter chapter--ink chapter--curtain chapter--last" data-theme="dark">
+      <section class="demo" id="demo" aria-labelledby="demo-title" data-hud="Book a demo">
+        <div class="demo__wrap">
+          <div class="demo__copy">
+            <p class="eyebrow eyebrow--inv"><span class="eyebrow__dot"></span>Book a demo</p>
+            <h2 class="h1" id="demo-title" data-split>See it ring up <span class="serif">your own</span> products.</h2>
+            <p class="lead">Send us twenty of your items and we’ll run the terminal on your prices, your VAT tier and your invoice layout. Thirty minutes, at your outlet or over a call.</p>
+
+            <ol class="dsteps">
+              <li data-reveal><span>01</span><div><b>We call you back</b><p>Usually the same working day, on the number you give us.</p></div></li>
+              <li data-reveal><span>02</span><div><b>We load your products</b><p>Send a price list in any form — Excel, a photo of a register page, or a few items over WhatsApp.</p></div></li>
+              <li data-reveal><span>03</span><div><b>You run the counter yourself</b><p>Scan, bill, split a payment and print a VAT invoice on your own stock before deciding anything.</p></div></li>
+            </ol>
+            <p class="demo__fine"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>No cost and no obligation · We don’t resell your data</p>
+          </div>
+
+          <form class="form" data-form novalidate aria-labelledby="form-title">
+            <div class="form__head">
+              <h3 id="form-title">Request your demo</h3>
+              <p>Ask us anything — migration, hardware, NBR filing.</p>
+            </div>
+
+            <div class="form__grid">
+              <div class="field">
+                <label for="f-business">Business name <abbr title="required">*</abbr></label>
+                <input id="f-business" name="business" type="text" autocomplete="organization" required>
+                <span class="field__err" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="f-name">Your name <abbr title="required">*</abbr></label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required>
+                <span class="field__err" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone <abbr title="required">*</abbr></label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+880 1XXX-XXXXXX" required>
+                <span class="field__err" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="f-email">Email</label>
+                <input id="f-email" name="email" type="email" autocomplete="email">
+                <span class="field__err" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="f-type">Business type <abbr title="required">*</abbr></label>
+                <div class="select"><select id="f-type" name="type" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option>Supershop &amp; grocery</option><option>Pharmacy</option><option>Restaurant &amp; café</option><option>Apparel &amp; footwear</option><option>Bakery</option><option>Distribution &amp; wholesale</option><option>Other</option>
+                </select></div>
+                <span class="field__err" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="f-outlets">Outlets <abbr title="required">*</abbr></label>
+                <div class="select"><select id="f-outlets" name="outlets" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option>1 outlet</option><option>2–5 outlets</option><option>6–15 outlets</option><option>16+ outlets</option>
+                </select></div>
+                <span class="field__err" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="f-city">City or area</label>
+                <input id="f-city" name="city" type="text" autocomplete="address-level2">
+              </div>
+              <div class="field">
+                <label for="f-time">Best time to call</label>
+                <div class="select"><select id="f-time" name="time">
+                  <option>Any time</option><option>Morning · 9am–12pm</option><option>Afternoon · 12–5pm</option><option>Evening · 5–9pm</option>
+                </select></div>
+              </div>
+              <div class="field field--full">
+                <label for="f-notes">Anything we should know</label>
+                <textarea id="f-notes" name="notes" rows="3"></textarea>
+              </div>
+              <div class="field hp" aria-hidden="true">
+                <label for="f-site">Leave this field empty</label>
+                <input id="f-site" name="website" type="text" tabindex="-1" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="form__foot">
+              <button class="btn btn--accent btn--lg" type="submit" data-magnetic data-roll>Request my demo <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              <p>Or call <a href="tel:+8801700998877">+880 1700-998877</a> — support desk, seven days.<br>We use these details only to contact you about your demo. See our <a href="#">Privacy Policy</a>.</p>
+            </div>
+
+            <div class="form__done" data-done role="status" aria-live="polite" hidden>
+              <span class="form__done-ico"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              <h3>Thank you — we’ll call you back.</h3>
+              <p>Usually the same working day. In the meantime, gather around twenty of your items and prices — any format works.</p>
+              <button class="link" type="button" data-again>Send another request</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="footer" data-footer>
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="Core Agency — back to top">
+          <svg class="brand__mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+          <span class="brand__name">Core Agency</span>
+        </a>
+        <p>Intelligent cloud POS for Bangladesh — built for the counter, the kitchen, the warehouse and the head office.</p>
+        <address>
+          <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+          <span>Level 8, Tower 3<br>Gulshan Avenue<br>Dhaka 1212, Bangladesh</span>
+        </address>
+      </div>
+      <nav class="footer__col" aria-label="Platform">
+        <h4>Platform</h4>
+        <a href="#industries">Industries</a>
+        <a href="#engine">Engine modules</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#roi">ROI estimator</a>
+      </nav>
+      <nav class="footer__col" aria-label="Company">
+        <h4>Company</h4>
+        <a href="#compare">Compare</a>
+        <a href="#voices">Client voices</a>
+        <a href="#faq">FAQ</a>
+        <a href="#demo">Book a demo</a>
+      </nav>
+      <div class="footer__col">
+        <h4>Reach us</h4>
+        <a href="tel:+8801700998877"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>+880 1700-998877</a>
+        <a href="mailto:hello@coreagency.com.bd"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>hello@coreagency.com.bd</a>
+        <p>Support desk · seven days</p>
+      </div>
+    </div>
+    <div class="footer__word" aria-hidden="true" data-footer-word>Core Agency</div>
+    <div class="footer__bar">
+      <span>© 2026 Core Agency Ltd. All rights reserved.</span>
+      <span class="footer__legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></span>
+      <button class="totop" type="button" data-totop>Back to top <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></button>
+    </div>
+  </footer>
+
+  <script>
+    /* If the animation libraries are blocked or offline, fall back to the static page. */
+    window.addEventListener('load', function () {
+      if (!window.gsap || !window.ScrollTrigger) {
+        document.documentElement.classList.remove('js', 'is-loading');
+      }
+    });
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script defer src="assets/js/core.js"></script>
+  <script defer src="assets/js/hero.js"></script>
+  <script defer src="assets/js/story.js"></script>
+  <script defer src="assets/js/solutions.js"></script>
+  <script defer src="assets/js/proof.js"></script>
+  <script defer src="assets/js/close.js"></script>
+  <script defer src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+/* =========================================================
+   Solutions chapter — industries (horizontal) · use cases (stack)
+   ========================================================= */
+
+/* ---------- industries ---------- */
+.industries { position: relative; padding: clamp(96px, 14vh, 170px) 0 clamp(72px, 11vh, 130px); }
+.industries__head {
+  display: grid; gap: 24px; max-width: 1560px; margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.industries__head .h2 { margin-top: 20px; }
+@media (min-width: 900px) {
+  .industries__head { grid-template-columns: 1fr minmax(260px, 420px); align-items: end; }
+}
+
+.hscroll { margin-top: clamp(32px, 6vh, 64px); }
+.hscroll__track {
+  display: flex; gap: clamp(14px, 1.6vw, 24px);
+  padding: 8px var(--gutter) 14px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+}
+.hscroll__track::-webkit-scrollbar { display: none; }
+
+.icard {
+  flex: 0 0 min(82vw, 380px); scroll-snap-align: start;
+  display: flex; flex-direction: column;
+  padding: 14px 14px 28px; border-radius: var(--radius-l);
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--line), 0 30px 60px -44px rgba(10, 15, 30, 0.45);
+  transition: transform 0.7s var(--e-out), box-shadow 0.5s var(--e-out);
+}
+.icard:hover { transform: translateY(-6px); box-shadow: 0 0 0 1px var(--line-strong), 0 50px 80px -44px rgba(10, 15, 30, 0.5); }
+.icard__art {
+  flex: 0 0 auto; aspect-ratio: 5 / 3; overflow: hidden;
+  border-radius: calc(var(--radius-l) - 8px); background: var(--paper-2); color: var(--ink);
+}
+.icard__art svg { width: 100%; height: 100%; }
+.icard__meta { display: flex; align-items: center; justify-content: space-between; padding: 22px 12px 0; }
+.icard__no { font: 600 0.78rem/1 var(--f-sans); letter-spacing: 0.12em; color: var(--fg-3); font-variant-numeric: tabular-nums; }
+.icard h3 { padding: 16px 12px 0; font: 400 clamp(1.5rem, 2vw, 2rem)/1.08 var(--f-display); letter-spacing: -0.022em; }
+.icard p { padding: 10px 12px 0; max-width: 34ch; color: var(--fg-2); font-size: 0.98rem; line-height: 1.5; }
+
+.icard--cta {
+  --fg-2: rgba(244, 242, 236, 0.7);
+  justify-content: flex-end; padding: clamp(24px, 2.4vw, 36px);
+  background: var(--ink); color: var(--paper); box-shadow: none;
+  background-image: radial-gradient(100% 80% at 100% 0%, rgba(255, 74, 36, 0.28), transparent 60%);
+}
+.icard--cta:hover { transform: none; box-shadow: none; }
+.icard__cta-in { display: grid; gap: 16px; justify-items: start; }
+.icard--cta h3 { padding: 0; font-size: clamp(1.7rem, 2.3vw, 2.4rem); }
+.icard--cta p { padding: 0; max-width: 30ch; }
+.icard--cta .btn { --btn-hover-bg: var(--paper); --btn-hover-fg: var(--ink); margin-top: 8px; }
+
+.industries__foot { display: none; }
+
+/* pinned (desktop) */
+.industries.is-pinned {
+  height: 100vh; height: 100svh; min-height: 640px;
+  display: flex; flex-direction: column;
+  padding: calc(var(--header-h) + 14px) 0 30px;
+}
+/* the moving track is clipped + contained, so its transform never forces the ancestors to re-measure their overflow */
+.industries.is-pinned .hscroll {
+  flex: 1; min-height: 0; display: flex; align-items: center; margin-top: 0;
+  padding-block: 30px; overflow: clip; contain: layout paint;
+}
+.industries.is-pinned .hscroll__track {
+  overflow: visible; width: max-content; scroll-snap-type: none; padding-block: 0;
+  will-change: transform;
+}
+.industries.is-pinned .icard { flex: 0 0 clamp(300px, 26vw, 500px); height: min(58vh, 640px); scroll-snap-align: none; }
+.industries.is-pinned .icard__art { flex: 1 1 auto; min-height: 0; aspect-ratio: auto; }
+.industries.is-pinned .icard__art svg { will-change: transform; } /* parallax slides these on the compositor */
+.industries.is-pinned .industries__foot {
+  display: flex; align-items: center; gap: 22px;
+  padding: 0 var(--gutter); margin-top: 6px;
+  font: 600 0.74rem/1 var(--f-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-2);
+}
+.industries__count { font-variant-numeric: tabular-nums; }
+.industries__count b { color: var(--fg); }
+.industries__bar { position: relative; flex: 1; height: 2px; background: var(--line); }
+.industries__bar i { position: absolute; inset: 0; background: var(--accent); transform: scaleX(0); transform-origin: 0 50%; }
+
+/* illustration vocabulary */
+.a-card { fill: #fff; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
+.a-ink { fill: var(--ink); }
+.a-acc { fill: var(--accent); }
+.a-soft { fill: rgba(10, 15, 30, 0.13); }
+.a-line { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.a-line--acc { stroke: var(--accent); }
+.a-line--inv { stroke: #fff; }
+.a-ring { fill: none; stroke: var(--ink); stroke-width: 2; }
+.a-ring--inv { stroke: #fff; stroke-opacity: 0.7; }
+.a-beam { fill: var(--accent); }
+.a-beam-glow { fill: var(--accent); opacity: 0.22; }
+
+/* ambient illustration motion: pure CSS (no JS per frame), paused unless the card is on screen */
+.icard .a-beam, .icard .a-beam-glow { animation: a-beam 2.6s ease-in-out infinite alternate paused; }
+.icard .a-caps { animation: a-bob 3.4s ease-in-out infinite alternate paused; }
+.icard .a-breathe { transform-box: fill-box; transform-origin: center; animation: a-breathe 3s ease-in-out infinite alternate paused; }
+.icard .a-wobble { transform-origin: 0 0; animation: a-wobble 3.4s ease-in-out infinite alternate paused; }
+.icard .a-spin { transform-origin: 200px 120px; animation: a-spin 7s linear infinite paused; }
+.icard.is-live .a-beam, .icard.is-live .a-beam-glow, .icard.is-live .a-caps, .icard.is-live .a-breathe,
+.icard.is-live .a-wobble, .icard.is-live .a-spin { animation-play-state: running; }
+@keyframes a-beam { to { transform: translateY(78px); } }
+@keyframes a-bob { to { transform: translateY(-5px); } }
+@keyframes a-breathe { to { transform: scale(1.16); } }
+@keyframes a-wobble { from { transform: rotate(-9deg) scale(0.96); } to { transform: rotate(7deg) scale(1.05); } }
+@keyframes a-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .icard .a-beam, .icard .a-beam-glow, .icard .a-caps, .icard .a-breathe, .icard .a-wobble, .icard .a-spin { animation: none; }
+}
+.a-txt { font: 700 13px var(--f-sans); fill: var(--ink); letter-spacing: -0.01em; }
+.a-txt--inv { fill: #fff; }
+.a-txt--xl { font-size: 28px; }
+.a-white-s { fill: #fff; stroke: var(--ink); stroke-width: 1.8; }
+.a-cell { fill: var(--paper-2); stroke: var(--ink); stroke-width: 1.6; }
+.a-cell--empty { fill: var(--paper); stroke-dasharray: 3 4; stroke-opacity: 0.5; }
+.a-chip { fill: #fff; stroke: var(--ink); stroke-width: 1.6; }
+.a-chip--on { fill: var(--accent); stroke: var(--accent); }
+.a-dot-w { fill: #fff; }
+.a-dot-w--s { stroke: var(--ink); stroke-width: 1.8; }
+.a-route { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-dasharray: 2 9; stroke-linecap: round; stroke-opacity: 0.55; }
+
+/* ---------- use cases ---------- */
+.usecases { padding: clamp(48px, 8vh, 100px) var(--gutter) clamp(96px, 16vh, 200px); }
+.usecases__head {
+  display: grid; gap: 22px; justify-items: start;
+  max-width: 1560px; margin-inline: auto; margin-bottom: clamp(40px, 7vh, 80px);
+}
+.usecases__head .h2 { max-width: 14ch; }
+
+.stack { max-width: 1560px; margin-inline: auto; }
+.ucard {
+  position: relative; display: grid; gap: clamp(24px, 4vw, 64px);
+  grid-template-columns: minmax(0, 1fr);
+  padding: clamp(22px, 3vw, 44px); margin-bottom: clamp(24px, 5vh, 60px);
+  border-radius: var(--radius-xl); background: var(--surface);
+  box-shadow: 0 0 0 1px var(--line), 0 40px 80px -50px rgba(10, 15, 30, 0.5);
+  transform-origin: 50% 0;
+}
+.ucard:last-child { margin-bottom: 0; }
+.ucard__shade { position: absolute; inset: 0; z-index: 3; border-radius: inherit; background: var(--ink); opacity: 0; pointer-events: none; will-change: opacity; }
+@media (min-width: 1024px) {
+  .ucard {
+    position: sticky; top: calc(var(--header-h) + 14px + var(--i) * 22px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center;
+    min-height: min(70vh, 620px); margin-bottom: clamp(36px, 10vh, 120px);
+    will-change: transform;
+  }
+}
+.ucard__kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 600 0.74rem/1 var(--f-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-2);
+}
+.ucard__kicker b { color: var(--accent-text); font-variant-numeric: tabular-nums; }
+.ucard h3 {
+  margin-top: 18px; max-width: 14ch;
+  font: 360 clamp(2rem, 3.5vw, 3.6rem)/1.04 var(--f-display); letter-spacing: -0.03em; text-wrap: balance;
+}
+.ucard__copy > p { margin-top: 20px; max-width: 50ch; color: var(--fg-2); font-size: clamp(1rem, 1.1vw, 1.12rem); line-height: 1.55; }
+.ucard__copy > p b { color: var(--fg); font-weight: 600; }
+.checks { display: grid; gap: 12px; margin-top: 26px; }
+.checks li { display: flex; align-items: flex-start; gap: 12px; color: var(--fg); font-size: 0.98rem; line-height: 1.45; }
+.checks .icon { margin-top: 0.1em; width: 1.3em; height: 1.3em; color: var(--accent-text); stroke-width: 2.2; }
+
+.ucard__widget { align-self: stretch; display: flex; border-radius: var(--radius-l); background: var(--ink); color: var(--paper); overflow: hidden; }
+
+/* ---------- widgets (shared) ---------- */
+.wg {
+  position: relative; flex: 1; display: flex; flex-direction: column; gap: 16px;
+  min-height: 400px; padding: clamp(18px, 2vw, 28px);
+  background: radial-gradient(100% 70% at 92% 0%, rgba(255, 74, 36, 0.16), transparent 60%);
+  font-size: 0.95rem;
+}
+.wg__head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  font: 600 0.7rem/1.3 var(--f-sans); letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(244, 242, 236, 0.6);
+}
+.wg__live { display: inline-flex; align-items: center; gap: 8px; color: #56dfa9; white-space: nowrap; }
+/* live dot: the ping is a scaled + faded pseudo-element, so it runs on the compositor (no repaints) */
+.wg__live i { position: relative; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.wg__live i::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%; background: currentColor;
+  animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite; will-change: transform, opacity;
+}
+.ucard__widget:not(.is-live) .wg__live i::after { animation-play-state: paused; }
+.wg__live--muted { color: rgba(244, 242, 236, 0.6); }
+.wg__live b { font-variant-numeric: tabular-nums; }
+@keyframes ping { 0% { transform: scale(1); opacity: 0.55; } 80%, 100% { transform: scale(3.4); opacity: 0; } }
+.wg__list { display: grid; gap: 12px; }
+.wg__toast {
+  margin-top: auto; display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; border-radius: 14px; background: #fff; color: var(--ink);
+  font-size: 0.86rem; line-height: 1.35;
+  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.7);
+  opacity: 0; transform: translateY(14px);
+}
+.wg__toast .icon { flex: none; color: var(--accent); }
+.wg__toast--warn .icon { color: #d98a0b; }
+.wg__hint { text-align: center; font-size: 0.8rem; color: rgba(244, 242, 236, 0.5); }
+.wg__foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 0.86rem; color: rgba(244, 242, 236, 0.65); }
+
+.badge {
+  display: inline-flex; align-items: center; padding: 0.55em 0.9em; border-radius: 999px;
+  font: 600 0.72rem/1 var(--f-sans); letter-spacing: 0.04em; white-space: nowrap;
+}
+.badge--ok { background: rgba(23, 178, 123, 0.16); color: #56dfa9; }
+.badge--warn { background: rgba(244, 166, 42, 0.16); color: #f6bb55; }
+.badge--bad { background: rgba(239, 68, 82, 0.16); color: #ff8a93; }
+.badge b { font-variant-numeric: tabular-nums; }
+
+/* stock */
+.srow {
+  display: grid; grid-template-columns: minmax(0, 1fr) 84px auto; align-items: center; gap: 14px;
+  padding: 14px 16px; border-radius: 16px;
+  background: rgba(244, 242, 236, 0.05); box-shadow: inset 0 0 0 1px rgba(244, 242, 236, 0.08);
+}
+.srow__main b { display: block; font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
+.srow__main small { display: block; color: rgba(244, 242, 236, 0.5); font-size: 0.8rem; }
+.srow__bar { height: 6px; border-radius: 999px; background: rgba(244, 242, 236, 0.1); overflow: hidden; }
+.srow__bar i {
+  display: block; width: 100%; height: 100%; border-radius: inherit;
+  background: var(--ok); transform-origin: 0 50%; transform: scaleX(var(--p, 0.1));
+  transition: transform 0.9s var(--e-out), background-color 0.5s;
+}
+.srow.is-low .srow__bar i { background: var(--bad); }
+
+/* expiry */
+.erow { padding: 16px; border-radius: 16px; background: rgba(244, 242, 236, 0.05); box-shadow: inset 0 0 0 1px rgba(244, 242, 236, 0.08); }
+.erow__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.erow em { font-style: normal; font-weight: 500; color: rgba(244, 242, 236, 0.55); }
+.erow__bar { position: relative; height: 8px; margin-top: 14px; border-radius: 999px; background: rgba(244, 242, 236, 0.1); overflow: hidden; }
+.erow__bar i { position: absolute; inset: 0; border-radius: inherit; background: var(--bad); transform-origin: 0 50%; transform: scaleX(var(--w, 0.2)); }
+.erow:nth-child(2) .erow__bar i { background: var(--warn); }
+
+/* floor */
+.wg__occ { color: rgba(244, 242, 236, 0.7); font-variant-numeric: tabular-nums; }
+.wg__occ b { color: var(--paper); }
+.floor {
+  position: relative; flex: 1; min-height: 260px; border-radius: 16px;
+  background-image: radial-gradient(rgba(244, 242, 236, 0.13) 1px, transparent 1.3px); background-size: 20px 20px;
+  box-shadow: inset 0 0 0 1px rgba(244, 242, 236, 0.08);
+}
+.tbl {
+  position: absolute; left: var(--x); top: var(--y); width: 24%; aspect-ratio: 1.15;
+  display: grid; place-content: center; gap: 2px; text-align: center;
+  border-radius: 16px; background: rgba(244, 242, 236, 0.06); box-shadow: inset 0 0 0 1.5px rgba(244, 242, 236, 0.2);
+  font-family: var(--f-display);
+  transition: background-color 0.45s var(--e-out), box-shadow 0.45s var(--e-out), transform 0.6s var(--e-out);
+}
+.tbl--round { border-radius: 50%; }
+.tbl b { font-size: 1.2rem; font-weight: 480; letter-spacing: -0.01em; }
+.tbl small { font: 600 0.66rem/1 var(--f-sans); letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244, 242, 236, 0.55); }
+.tbl:hover { transform: scale(1.05); }
+.tbl:active { transform: scale(0.96); }
+.tbl.is-on { background: rgba(255, 74, 36, 0.2); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.tbl.is-on small { color: #ff9b83; }
+
+/* transit */
+.trow { padding: 16px; border-radius: 16px; background: rgba(244, 242, 236, 0.05); box-shadow: inset 0 0 0 1px rgba(244, 242, 236, 0.08); }
+.trow__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-weight: 600; }
+.trow__top b { display: inline-flex; align-items: center; gap: 0.55em; flex-wrap: wrap; }
+.trow__top span { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+/* progress + truck move with transforms only (no layout work while they animate) */
+.trow__track { position: relative; height: 8px; margin: 20px 0 16px; border-radius: 999px; background: rgba(244, 242, 236, 0.1); }
+.trow__track i {
+  position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(90deg, var(--accent), #ff8a5c);
+  transform: scaleX(0); transform-origin: 0 50%;
+}
+.trow__truck {
+  position: absolute; top: 50%; left: 0; width: 30px; height: 30px; margin: -15px 0 0 -15px;
+  display: grid; place-items: center; border-radius: 50%;
+  background: var(--paper); color: var(--ink); box-shadow: 0 6px 14px -4px rgba(0, 0, 0, 0.6);
+  transform: translateX(0);
+}
+.trow__truck .icon { width: 16px; height: 16px; }
+.trow small { color: rgba(244, 242, 236, 0.5); font-size: 0.8rem; }
+
+@media (max-width: 560px) {
+  .srow { grid-template-columns: minmax(0, 1fr) auto; }
+  .srow__bar { display: none; }
+  .wg { min-height: 360px; }
+}

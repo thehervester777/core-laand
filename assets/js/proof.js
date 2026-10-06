@@ -123,6 +123,9 @@
   };
 
   /* ---------- voices ---------- */
+  // resting opacity of testimonials that are not at the reading position: dim enough to show focus, bright enough to read
+  const DIM = 0.42;
+
   const initVoices = (mm) => {
     const quotes = $$('[data-quote]');
     const cur = $('[data-q-current]');
@@ -141,9 +144,9 @@
           defaults: { ease: 'none' },
           scrollTrigger: { trigger: q, start: 'top 84%', end: 'bottom 16%', scrub: true },
         })
-          .fromTo(q, { opacity: 0.16, y: 56 }, { opacity: 1, y: 0, duration: 0.32 })
+          .fromTo(q, { opacity: DIM, y: 56 }, { opacity: 1, y: 0, duration: 0.32 })
           .to(q, { opacity: 1, y: 0, duration: 0.36 })
-          .to(q, { opacity: 0.16, y: -56, duration: 0.32 });
+          .to(q, { opacity: DIM, y: -56, duration: 0.32 });
         ScrollTrigger.create({
           trigger: q, start: 'top 55%', end: 'bottom 55%',
           onToggle: (self) => { if (self.isActive) setCurrent(i); },

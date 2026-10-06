@@ -259,7 +259,7 @@
       .map((el) => ({ el, words: CA.splitWords(el, { mask: false }) }));
     mm.add(CA.mq.motion, () => {
       groups.forEach(({ el, words }) => {
-        gsap.set(words, { opacity: 0.16 });
+        gsap.set(words, { opacity: 0.3 }); // still readable before it is reached
         gsap.to(words, {
           opacity: 1, ease: 'none', stagger: { amount: 0.9 },
           scrollTrigger: { trigger: el, start: 'top 90%', end: 'bottom 58%', scrub: true },

@@ -20,14 +20,14 @@
 .fx-cursor__stretch { position: absolute; left: 0; top: 0; width: 0; height: 0; will-change: transform; }
 .fx-cursor__ring {
   position: absolute; left: -21px; top: -21px; width: 42px; height: 42px; border-radius: 50%;
-  border: 1.5px solid rgba(255, 74, 36, 0.7);
-  background: rgba(255, 74, 36, 0);
+  border: 1.5px solid rgba(47,107,235, 0.7);
+  background: rgba(47,107,235, 0);
   transform: scale(var(--s, 1));
   transition: transform 0.55s var(--e-out), background-color 0.4s var(--e-out), border-color 0.4s var(--e-out);
 }
-.fx-cursor.is-link .fx-cursor__ring { --s: 1.55; background: rgba(255, 74, 36, 0.13); border-color: rgba(255, 74, 36, 0.95); }
-.fx-cursor.is-card .fx-cursor__ring { --s: 1.2; border-color: rgba(255, 74, 36, 0.9); }
-.fx-cursor.is-press .fx-cursor__ring { --s: 0.78; background: rgba(255, 74, 36, 0.22); transition-duration: 0.18s; }
+.fx-cursor.is-link .fx-cursor__ring { --s: 1.55; background: rgba(47,107,235, 0.13); border-color: rgba(47,107,235, 0.95); }
+.fx-cursor.is-card .fx-cursor__ring { --s: 1.2; border-color: rgba(47,107,235, 0.9); }
+.fx-cursor.is-press .fx-cursor__ring { --s: 0.78; background: rgba(47,107,235, 0.22); transition-duration: 0.18s; }
 .fx-cursor.is-link.is-press .fx-cursor__ring { --s: 1.2; }
 
 /* ---------- tilt + glare ---------- */
@@ -50,8 +50,8 @@
 
 /* ---------- curtain depth ----------
    Each rounded chapter that slides over the previous one casts a soft upward shadow, so the stack reads as layers. */
-.chapter--curtain { box-shadow: 0 -26px 52px -26px rgba(10, 15, 30, 0.34); }
-.chapter--ink.chapter--curtain { box-shadow: 0 -26px 52px -26px rgba(10, 15, 30, 0.5); }
+.chapter--curtain { box-shadow: 0 -26px 52px -26px rgba(10,27,51, 0.34); }
+.chapter--ink.chapter--curtain { box-shadow: 0 -26px 52px -26px rgba(10,27,51, 0.5); }
 
 /* ---------- footer wordmark ---------- */
 .footer__word .ch { transform-origin: 50% 100%; }

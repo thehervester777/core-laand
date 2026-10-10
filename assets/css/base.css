@@ -5,15 +5,15 @@
 
 :root {
   /* palette */
-  --ink: #0a0f1e;
-  --ink-2: #10172b;
-  --ink-3: #19213f;
-  --paper: #f4f2ec;
-  --paper-2: #ebe8df;
-  --paper-3: #dedacd;
+  --ink: #0a1b33;
+  --ink-2: #12294a;
+  --ink-3: #1b3a66;
+  --paper: #f3f6fa;
+  --paper-2: #e8edf4;
+  --paper-3: #d6dee9;
   --white: #ffffff;
-  --accent: #ff4a24;
-  --accent-fg: #e8401b; /* accent when used as text on paper */
+  --accent: #2f6beb;
+  --accent-fg: #1f55cc; /* accent when used as text on paper */
   --ok: #17b27b;
   --warn: #f4a62a;
   --bad: #ef4452;
@@ -21,17 +21,18 @@
   /* themed (overridden inside .chapter--ink) */
   --bg: var(--paper);
   --fg: var(--ink);
-  --fg-2: rgba(10, 15, 30, 0.68);
-  --fg-3: rgba(10, 15, 30, 0.46);
-  --line: rgba(10, 15, 30, 0.12);
-  --line-strong: rgba(10, 15, 30, 0.22);
+  --fg-2: rgba(10,27,51, 0.68);
+  --fg-3: rgba(10,27,51, 0.46);
+  --line: rgba(10,27,51, 0.12);
+  --line-strong: rgba(10,27,51, 0.22);
   --surface: #ffffff;
   --accent-text: var(--accent-fg);
 
-  /* type — Fraunces (editorial serif, optical-size aware) for headlines, numerals and accents;
-     Instrument Sans for body and UI. The Bengali families only supply the taka sign. */
-  --f-sans: "Instrument Sans", "Noto Sans Bengali", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --f-display: "Fraunces", "Noto Serif Bengali", "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+  /* type — one pixel family (Pixelify Sans) for everything, in the spirit of a classic OS interface.
+     Hierarchy comes from size, weight and colour, never from italics or tight tracking.
+     The Bengali family only supplies the taka sign. */
+  --f-sans: "Pixelify Sans", "Noto Sans Bengali", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --f-display: "Pixelify Sans", "Noto Sans Bengali", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --f-serif: var(--f-display);
 
   /* layout */
@@ -51,10 +52,10 @@
 .is-ink {
   --bg: var(--ink);
   --fg: var(--paper);
-  --fg-2: rgba(244, 242, 236, 0.7);
-  --fg-3: rgba(244, 242, 236, 0.46);
-  --line: rgba(244, 242, 236, 0.14);
-  --line-strong: rgba(244, 242, 236, 0.28);
+  --fg-2: rgba(243,246,250, 0.7);
+  --fg-3: rgba(243,246,250, 0.46);
+  --line: rgba(243,246,250, 0.14);
+  --line-strong: rgba(243,246,250, 0.28);
   --surface: var(--ink-2);
   --accent-text: var(--accent);
 }
@@ -81,8 +82,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  font-optical-sizing: auto; /* Fraunces switches to its high-contrast display cut as the size grows */
+  font-optical-sizing: auto;
   font-synthesis: none; /* never fake a bold or italic: a missing face falls back instead of looking smeared */
+  font-variant-ligatures: none; /* Pixelify Sans draws fi / ffi / fl as one odd glyph ("first" reads as "Arst") */
+  font-feature-settings: "liga" 0, "clig" 0;
   overflow-x: clip;
 }
 
@@ -139,15 +142,15 @@ html.is-loading { overflow: hidden; }
 .lm-dot { fill: var(--accent); }
 
 /* ---------- type ---------- */
-.h1, .h2 { font-family: var(--f-display); font-weight: 360; text-wrap: balance; }
-.h1 { font-size: clamp(2.6rem, 6.2vw, 6.9rem); line-height: 1; letter-spacing: -0.036em; }
-.h2 { font-size: clamp(2.25rem, 4.8vw, 5.1rem); line-height: 1.02; letter-spacing: -0.034em; }
+.h1, .h2 { font-family: var(--f-display); font-weight: 400; text-wrap: balance; }
+.h1 { font-size: clamp(2.6rem, 6.2vw, 6.9rem); line-height: 1; letter-spacing: 0; }
+.h2 { font-size: clamp(2.25rem, 4.8vw, 5.1rem); line-height: 1.02; letter-spacing: 0; }
 
 .serif {
   font-family: var(--f-serif);
-  font-style: italic;
-  font-weight: 320;
-  letter-spacing: -0.022em;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
   font-size: 1em;
   line-height: 0.95;
   color: var(--accent-text);
@@ -170,7 +173,7 @@ html.is-loading { overflow: hidden; }
 .eyebrow__dot {
   width: 7px; height: 7px; border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(255, 74, 36, 0.18);
+  box-shadow: 0 0 0 4px rgba(47,107,235, 0.18);
 }
 
 .tag {
@@ -196,7 +199,7 @@ html.is-loading { overflow: hidden; }
   display: inline-flex; align-items: center; justify-content: center; gap: 0.7em;
   height: var(--h); padding: 0 1.55em; border-radius: 999px;
   background: var(--btn-bg); color: var(--btn-fg);
-  font: 600 0.95rem/1 var(--f-sans); letter-spacing: -0.005em; white-space: nowrap;
+  font: 600 0.95rem/1 var(--f-sans); letter-spacing: 0; white-space: nowrap;
   transition: color 0.45s var(--e-out);
 }
 .btn::before {
@@ -280,16 +283,16 @@ main { position: relative; z-index: 2; }
    GPU pass every frame. A near-opaque surface looks as clean and scrolls for free. */
 .header {
   --hd-fg: var(--ink);
-  --hd-bg: rgba(244, 242, 236, 0.94);
-  --hd-line: rgba(10, 15, 30, 0.08);
+  --hd-bg: rgba(243,246,250, 0.94);
+  --hd-line: rgba(10,27,51, 0.08);
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   color: var(--hd-fg);
   transition: color 0.5s var(--e-out);
 }
 .header[data-theme="dark"] {
   --hd-fg: var(--paper);
-  --hd-bg: rgba(10, 15, 30, 0.92);
-  --hd-line: rgba(244, 242, 236, 0.08);
+  --hd-bg: rgba(10,27,51, 0.92);
+  --hd-line: rgba(243,246,250, 0.08);
 }
 .header::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
@@ -308,14 +311,14 @@ html:not(.js) .header::before { opacity: 1; } /* static fallback (no JS): the ba
 .brand { display: inline-flex; align-items: center; gap: 11px; justify-self: start; }
 .brand__mark { width: 30px; height: 30px; color: currentColor; }
 .brand__name {
-  font: 500 1.3rem/1 var(--f-display); letter-spacing: -0.02em;
+  font: 500 1.3rem/1 var(--f-display); letter-spacing: 0;
 }
 
 @media (max-width: 1023.98px) { .header__bar { grid-template-columns: 1fr auto; } } /* nav hidden: brand left, menu button right */
 .nav { display: none; align-items: center; gap: clamp(20px, 2.4vw, 38px); }
 .nav a {
   position: relative; padding: 8px 0;
-  font-size: 0.9rem; font-weight: 500; letter-spacing: -0.005em;
+  font-size: 0.9rem; font-weight: 500; letter-spacing: 0;
   opacity: 0.78; transition: opacity 0.3s;
 }
 .nav a::after {
@@ -359,11 +362,11 @@ html:not(.js) .header::before { opacity: 1; } /* static fallback (no JS): the ba
 .menu__nav { display: grid; }
 .menu__nav a {
   display: flex; align-items: baseline; gap: 16px;
-  padding: 14px 0; border-bottom: 1px solid rgba(244, 242, 236, 0.12);
-  font: 380 clamp(2rem, 9vw, 3.2rem)/1.05 var(--f-display); letter-spacing: -0.028em;
+  padding: 14px 0; border-bottom: 1px solid rgba(243,246,250, 0.12);
+  font: 400 clamp(2rem, 9vw, 3.2rem)/1.05 var(--f-display); letter-spacing: 0;
 }
 .menu__nav a span { font: 600 0.72rem/1 var(--f-sans); letter-spacing: 0.14em; color: var(--accent); }
-.menu__foot { display: grid; gap: 22px; justify-items: start; color: rgba(244, 242, 236, 0.7); font-size: 0.98rem; }
+.menu__foot { display: grid; gap: 22px; justify-items: start; color: rgba(243,246,250, 0.7); font-size: 0.98rem; }
 .menu__foot .btn { --btn-hover-bg: var(--paper); --btn-hover-fg: var(--ink); }
 
 /* ---------- preloader ---------- */
@@ -379,7 +382,7 @@ html:not(.js) .header::before { opacity: 1; } /* static fallback (no JS): the ba
 .pl-dot { fill: var(--accent); transform-origin: 32px 32px; }
 .preloader__word {
   display: flex; gap: 0.32em;
-  font: 460 clamp(1.5rem, 2.6vw, 2.1rem)/1.1 var(--f-display); letter-spacing: -0.02em;
+  font: 500 clamp(1.5rem, 2.6vw, 2.1rem)/1.1 var(--f-display); letter-spacing: 0;
 }
 .preloader__word span { display: inline-block; overflow: hidden; padding-bottom: 0.22em; margin-bottom: -0.08em; }
 .preloader__word span > i { display: inline-block; font-style: normal; }
@@ -387,7 +390,7 @@ html:not(.js) .header::before { opacity: 1; } /* static fallback (no JS): the ba
   position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px;
   display: flex; justify-content: space-between; align-items: center;
   font: 600 0.7rem/1 var(--f-sans); letter-spacing: 0.16em; text-transform: uppercase;
-  color: rgba(244, 242, 236, 0.5);
+  color: rgba(243,246,250, 0.5);
 }
 .preloader__count { font-variant-numeric: tabular-nums; color: var(--paper); }
 .preloader__count b { font-weight: 600; }

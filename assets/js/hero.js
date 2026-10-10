@@ -89,10 +89,10 @@
         if (ring.dash) {
           ctx.setLineDash([2 * s, 13 * s]);
           ctx.lineDashOffset = -rot * r;
-          ctx.strokeStyle = 'rgba(10,15,30,0.3)';
+          ctx.strokeStyle = 'rgba(10,27,51,0.3)';
         } else {
           ctx.setLineDash([]);
-          ctx.strokeStyle = 'rgba(10,15,30,0.13)';
+          ctx.strokeStyle = 'rgba(10,27,51,0.13)';
         }
         ctx.lineWidth = lw;
         ctx.stroke();
@@ -101,7 +101,7 @@
           ctx.setLineDash([]);
           ctx.beginPath();
           ctx.arc(cx, cy, r, rot, rot + 260 / 830);
-          ctx.strokeStyle = '#ff4a24';
+          ctx.strokeStyle = '#2f6beb';
           ctx.lineWidth = Math.max(1.5, 4 * s);
           ctx.stroke();
         }
@@ -122,15 +122,15 @@
           const pe = 1 - (1 - p) * (1 - p);
           ctx.beginPath();
           ctx.arc(x, y, (24 + 16 * pe) * s, 0, TAU);
-          ctx.strokeStyle = `rgba(255,74,36,${(0.3 * (1 - pe)).toFixed(3)})`;
+          ctx.strokeStyle = `rgba(47,107,235,${(0.3 * (1 - pe)).toFixed(3)})`;
           ctx.lineWidth = Math.max(1, 2 * s);
           ctx.stroke();
         }
         ctx.beginPath();
         ctx.arc(x, y, 9 * s, 0, TAU);
-        ctx.fillStyle = '#f4f2ec';
+        ctx.fillStyle = '#f3f6fa';
         ctx.fill();
-        ctx.strokeStyle = '#ff4a24';
+        ctx.strokeStyle = '#2f6beb';
         ctx.lineWidth = Math.max(1.5, 3.5 * s);
         ctx.stroke();
       }

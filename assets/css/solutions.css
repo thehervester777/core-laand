@@ -75,7 +75,7 @@
 .industries.is-pinned .industries__foot {
   display: flex; align-items: center; gap: 22px;
   padding: 0 var(--gutter); margin-top: 6px;
-  font: 600 0.8rem/1 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-2);
+  font: 600 0.8rem/1 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-2);
 }
 .industries__count { font-variant-numeric: tabular-nums; }
 .industries__count b { color: var(--fg); }
@@ -152,7 +152,7 @@
 }
 .ucard__kicker {
   display: inline-flex; align-items: center; gap: 10px;
-  font: 600 0.8rem/1 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-2);
+  font: 600 0.8rem/1 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-2);
 }
 .ucard__kicker b { color: var(--accent-text); font-variant-numeric: tabular-nums; }
 .ucard h3 {
@@ -176,7 +176,7 @@
 }
 .wg__head {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  font: 600 0.8rem/1.3 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase;
+  font: 600 0.8rem/1.3 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase;
   color: rgba(243,246,250, 0.64);
 }
 .wg__live { display: inline-flex; align-items: center; gap: 8px; color: #56dfa9; white-space: nowrap; }
@@ -253,7 +253,7 @@
 }
 .tbl--round { border-radius: 50%; }
 .tbl b { font-size: 1.2rem; font-weight: 500; letter-spacing: 0; }
-.tbl small { font: 600 0.8rem/1 var(--f-sans); letter-spacing: 0.08em; text-transform: uppercase; color: rgba(243,246,250, 0.64); }
+.tbl small { font: 600 0.8rem/1 var(--f-pixel); letter-spacing: 0.08em; text-transform: uppercase; color: rgba(243,246,250, 0.64); }
 .tbl:hover { transform: scale(1.05); }
 .tbl:active { transform: scale(0.96); }
 .tbl.is-on { background: rgba(47,107,235, 0.2); box-shadow: inset 0 0 0 1.5px var(--accent); }

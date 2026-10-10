@@ -43,12 +43,16 @@
   --surface: #ffffff;
   --accent-text: var(--accent-fg);
 
-  /* type — one pixel family ("Pixel OS" = VT323) for everything, in the spirit of a classic OS interface.
-     It has a single weight and no italic, so hierarchy comes from size, colour and case, never from faux bold,
-     italics or tight tracking. It is monospaced, so changing numbers never shift their neighbours.
-     The Bengali family only supplies the taka sign. */
-  --f-sans: "Pixel OS", "Noto Sans Bengali", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --f-display: "Pixel OS", "Noto Sans Bengali", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* type — two voices.
+     --f-pixel ("Pixel OS" = VT323, a classic terminal / OS bitmap face): headlines, quotes, big numerals, brand, wordmark
+     and the small uppercase labels. One weight, no italic; it is monospaced.
+     --f-text (Roboto Condensed): body copy, buttons, nav, tables, forms, badges, device mock text. Real 400-700 weights.
+     --f-display / --f-serif point at the pixel face, --f-sans at the text face, so rules written for the old
+     display/sans split keep working. The Bengali family only supplies the taka sign. */
+  --f-text: "Roboto Condensed", "Noto Sans Bengali", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-pixel: "Pixel OS", "Noto Sans Bengali", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --f-sans: var(--f-text);
+  --f-display: var(--f-pixel);
   --f-serif: var(--f-display);
 
   /* layout */
@@ -100,7 +104,7 @@ body {
   text-rendering: optimizeLegibility;
   font-optical-sizing: auto;
   font-synthesis: none; /* never fake a bold or italic: a missing face falls back instead of looking smeared */
-  font-variant-ligatures: none; /* pixel faces draw ligatures as odd glyphs; keep every letter separate */
+  font-variant-ligatures: none; /* pixel faces draw ligatures as odd glyphs; keeping them off everywhere keeps the two voices consistent */
   font-feature-settings: "liga" 0, "clig" 0;
   overflow-x: clip;
 }
@@ -112,7 +116,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 img, svg { display: block; max-width: 100%; }
 address { font-style: normal; }
 b, strong { font-weight: 600; }
-p b, p strong { color: var(--fg); } /* one weight only: emphasis is carried by colour */
+p b, p strong { color: var(--fg); } /* emphasis in running text: bold plus full-strength colour (paragraphs are dimmed) */
 small { font-size: 0.8em; }
 ::selection { background: var(--accent); color: var(--on-accent); }
 
@@ -183,7 +187,7 @@ html.is-loading { overflow: hidden; }
 
 .eyebrow {
   display: inline-flex; align-items: center; gap: 0.75em;
-  font: 600 0.8rem/1 var(--f-sans);
+  font: 600 0.8rem/1 var(--f-pixel);
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--fg-2);
 }
@@ -197,7 +201,7 @@ html.is-loading { overflow: hidden; }
   display: inline-flex; align-items: center;
   padding: 0.42em 0.85em; border-radius: 999px;
   border: 1px solid var(--line-strong);
-  font: 600 0.8rem/1 var(--f-sans);
+  font: 600 0.8rem/1 var(--f-pixel);
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--fg-2);
 }
@@ -282,7 +286,7 @@ main { position: relative; z-index: 2; }
   position: fixed; left: 16px; top: 50%; z-index: 90;
   display: none; align-items: center; gap: 14px; white-space: nowrap;
   color: var(--ink); opacity: 0.8; pointer-events: none;
-  font: 600 0.8rem/1 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase;
+  font: 600 0.8rem/1 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase;
   transform-origin: 0 0; transform: rotate(-90deg) translateX(-50%);
   will-change: transform; /* own layer: HUD updates never repaint the page */
   transition: color 0.5s var(--e-out);
@@ -406,7 +410,7 @@ html:not(.js) .header::before { opacity: 1; } /* static fallback (no JS): the ba
 .preloader__meta {
   position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px;
   display: flex; justify-content: space-between; align-items: center;
-  font: 600 0.8rem/1 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase;
+  font: 600 0.8rem/1 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase;
   color: rgba(243,246,250, 0.64);
 }
 .preloader__count { font-variant-numeric: tabular-nums; color: var(--paper); }

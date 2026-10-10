@@ -20,7 +20,7 @@
   box-shadow: 0 0 0 1px rgba(243,246,250, 0.11), 0 60px 100px -50px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 .roi__top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
-.roi__label { font: 600 0.8rem/1.3 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-2); }
+.roi__label { font: 600 0.8rem/1.3 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-2); }
 .roi__value { font: 400 clamp(2.3rem, 3.9vw, 3.6rem)/1 var(--f-display); letter-spacing: 0; font-variant-numeric: lining-nums tabular-nums; }
 
 .range {
@@ -54,7 +54,7 @@
 .metric { padding: 18px 20px; border-radius: 20px; background: rgba(243,246,250, 0.05); box-shadow: inset 0 0 0 1px rgba(243,246,250, 0.09); }
 .metric--lead { grid-column: 1 / -1; background: var(--accent); color: var(--on-accent); box-shadow: none; }
 .metric--lead small, .metric--lead b em { opacity: 1; } /* any dimming drops white-on-cobalt under 4.5:1 */
-.metric small { display: block; font: 600 0.8rem/1.3 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
+.metric small { display: block; font: 600 0.8rem/1.3 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
 .metric b {
   display: block; margin-top: 10px;
   font: 400 clamp(1.8rem, 2.9vw, 2.5rem)/1 var(--f-display); letter-spacing: 0; font-variant-numeric: lining-nums tabular-nums;
@@ -87,7 +87,7 @@
 .cmp th, .cmp td { padding: 24px; text-align: left; vertical-align: middle; border-bottom: 1px solid var(--line); }
 .cmp thead th {
   padding-bottom: 28px; border-bottom: 1px solid var(--line-strong);
-  font: 600 0.8rem/1.3 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-3);
+  font: 600 0.8rem/1.3 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-3);
 }
 .cmp tbody th { font: 400 clamp(1.08rem, 1.4vw, 1.4rem)/1.25 var(--f-display); letter-spacing: 0; color: var(--fg); }
 .cmp td { color: var(--fg-2); }
@@ -127,7 +127,7 @@
   }
   .cmp td::before {
     content: attr(data-label); flex: 0 0 112px;
-    font: 600 0.8rem/1.3 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-3);
+    font: 600 0.8rem/1.3 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-3);
   }
   .cmp td .mk { margin-right: 0; flex: none; }
   .cmp tbody tr:last-child th, .cmp tbody tr:last-child td { border-bottom: 0; }

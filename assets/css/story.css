@@ -37,7 +37,7 @@
 }
 .stat__label {
   display: block; margin-top: 20px;
-  font: 600 0.8rem/1 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase;
+  font: 600 0.8rem/1 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--accent-hi);
 }
 .stat p { margin-top: 12px; max-width: 30ch; color: var(--fg-2); font-size: 0.98rem; line-height: 1.5; }
@@ -82,7 +82,7 @@
 .tags li {
   padding: 0.45em 0.9em; border-radius: 999px;
   border: 1px solid var(--line-strong);
-  font: 600 0.8rem/1 var(--f-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-2);
+  font: 600 0.8rem/1 var(--f-pixel); letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-2);
 }
 
 .engine__progress { position: relative; height: 2px; margin-top: 30px; background: var(--line); }
@@ -250,7 +250,7 @@
 }
 .qr p { margin-top: calc(12 * var(--u)); font-size: calc(12 * var(--u)); color: rgba(243,246,250, 0.64); }
 .qr p b { color: var(--paper); }
-.pay__label { margin-bottom: calc(12 * var(--u)); font: 600 calc(12.5 * var(--u))/1 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase; color: rgba(243,246,250, 0.64); }
+.pay__label { margin-bottom: calc(12 * var(--u)); font: 600 calc(12.5 * var(--u))/1 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase; color: rgba(243,246,250, 0.64); }
 .pay__methods { display: grid; gap: calc(9 * var(--u)); }
 .pm {
   position: relative;
@@ -283,7 +283,7 @@
 .res small { display: block; font-size: calc(12 * var(--u)); color: rgba(243,246,250, 0.64); }
 .res__tag {
   padding: calc(6 * var(--u)) calc(10 * var(--u)); border-radius: 999px; background: rgba(243,246,250, 0.1);
-  font: 600 calc(12.5 * var(--u))/1 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase;
+  font: 600 calc(12.5 * var(--u))/1 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase;
 }
 
 /* panel 3 · network */

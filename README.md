@@ -61,20 +61,27 @@ Performance rules specific to this layer (checked with a scripted full-page scro
 
 ## Typography
 
-One pixel typeface everywhere, in the spirit of a classic OS interface: **VT323** (a terminal / bitmap face). It is declared as the
-`"Pixel OS"` family in `assets/css/base.css` (served from Google's font CDN, scaled with `size-adjust: 118%` because its em box is small)
-and preloaded in `index.html`. The tokens `--f-display`, `--f-serif` and `--f-sans` all point at it.
+Two voices, set once in `:root` (`assets/css/base.css`):
 
-- **One weight, no italic.** Hierarchy comes from size, colour and case, never from faux bold or italics (`font-synthesis: none`).
-  Bold text inside paragraphs is carried by colour (`p b` is full-strength while the paragraph is dimmed). The accent words that used to be italic are
-  accent-coloured instead.
-- **Monospaced**, so counters, totals and prices never shift their neighbours as the digits change.
-- **No negative letter-spacing, ligatures off** (pixel faces look wrong tightened or ligated).
-- **Why VT323:** Pixelify Sans was tried first and rejected: its digit 5 is drawn like an S (and 0 like O), so `৳50B+` read `৳SOB+` and
-  `Rice 5kg` read `Rice Skg`. Bitcount draws S like `$`. VT323 has unambiguous digits and capitals, even in small tracked uppercase labels.
-  If you swap the face again, check `0 5 8 S O B 1 l I` and the capitals `C` / `O` at 12 px before committing.
+| Token | Family | Used for |
+| --- | --- | --- |
+| `--f-pixel` (also `--f-display`, `--f-serif`) | **Pixel OS** = VT323, a classic terminal / OS bitmap face | headlines, quotes, big numerals, brand, footer wordmark, the small uppercase labels |
+| `--f-text` (also `--f-sans`) | **Roboto Condensed** (variable, weights 400-700) | body copy, buttons, nav, tables, forms, badges, the text inside the device mocks |
+
+Rule of thumb: pixel for display and labels, Roboto Condensed for anything read in sentences and for every figure inside running or UI text.
+Rules written for the original display/sans split (headlines vs body) map onto the two tokens unchanged.
+
+- **Pixel OS** is declared as its own `@font-face` in `base.css` (served from Google's font CDN, scaled with `size-adjust: 118%` because its
+  em box is small) and preloaded in `index.html`. It has one weight and no italic, so it is never faux-bolded (`font-synthesis: none`); the accent
+  words that used to be italic are accent-coloured instead. It is monospaced, so big counters never shift their neighbours.
+- **Roboto Condensed** is linked from Google Fonts in `index.html`. It has real bold and tabular figures, which the UI uses
+  (`font-variant-numeric: tabular-nums`) wherever digits change.
+- No negative letter-spacing and ligatures off everywhere (pixel faces look wrong tightened or ligated).
+- **Why VT323 and not Pixelify Sans:** Pixelify Sans was tried first and rejected for display numerals: its digit 5 is drawn like an S (and 0 like O), so
+  `৳50B+` read `৳SOB+`. Bitcount draws S like `$`. VT323 has unambiguous digits and capitals. If you swap the pixel face again, check
+  `0 5 8 S O B 1 l I` and the capitals `C` / `O` at 12 px before committing.
 - Coverage is Latin. The taka sign `৳` comes from Noto Sans/Serif Bengali, requested with `&text=%E0%A7%B3` so only that single glyph
-  downloads (about 11 KB instead of ~290 KB); `✓` and arrows fall back to the system monospace font. If you add other Bengali text, drop the `text=` limit.
+  downloads (about 11 KB instead of ~290 KB); `✓` falls back to the system font. If you add other Bengali text, drop the `text=` limit.
 
 ## Palette
 

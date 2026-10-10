@@ -164,7 +164,7 @@
   padding: calc(24 * var(--u)) calc(26 * var(--u));
   border-left: 1px solid rgba(243,246,250, 0.09); background: rgba(243,246,250, 0.03);
 }
-.pos__cap { font: 600 calc(12.5 * var(--u))/1 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase; color: rgba(243,246,250, 0.64); }
+.pos__cap { font: 600 calc(12.5 * var(--u))/1 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase; color: rgba(243,246,250, 0.64); }
 .pos__total {
   display: flex; align-items: baseline; gap: calc(8 * var(--u)); margin-top: calc(10 * var(--u));
   font-family: var(--f-display); font-variant-numeric: tabular-nums;

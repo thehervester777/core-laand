@@ -61,21 +61,36 @@ Performance rules specific to this layer (checked with a scripted full-page scro
 
 ## Typography
 
-Two families from Google Fonts, set once in `:root` (`assets/css/base.css`) and linked in `index.html`:
+One pixel typeface everywhere, in the spirit of a classic OS interface: **VT323** (a terminal / bitmap face). It is declared as the
+`"Pixel OS"` family in `assets/css/base.css` (served from Google's font CDN, scaled with `size-adjust: 118%` because its em box is small)
+and preloaded in `index.html`. The tokens `--f-display`, `--f-serif` and `--f-sans` all point at it.
 
-| Token | Family | Used for |
+- **One weight, no italic.** Hierarchy comes from size, colour and case, never from faux bold or italics (`font-synthesis: none`).
+  Bold text inside paragraphs is carried by colour (`p b` is full-strength while the paragraph is dimmed). The accent words that used to be italic are
+  accent-coloured instead.
+- **Monospaced**, so counters, totals and prices never shift their neighbours as the digits change.
+- **No negative letter-spacing, ligatures off** (pixel faces look wrong tightened or ligated).
+- **Why VT323:** Pixelify Sans was tried first and rejected: its digit 5 is drawn like an S (and 0 like O), so `৳50B+` read `৳SOB+` and
+  `Rice 5kg` read `Rice Skg`. Bitcount draws S like `$`. VT323 has unambiguous digits and capitals, even in small tracked uppercase labels.
+  If you swap the face again, check `0 5 8 S O B 1 l I` and the capitals `C` / `O` at 12 px before committing.
+- Coverage is Latin. The taka sign `৳` comes from Noto Sans/Serif Bengali, requested with `&text=%E0%A7%B3` so only that single glyph
+  downloads (about 11 KB instead of ~290 KB); `✓` and arrows fall back to the system monospace font. If you add other Bengali text, drop the `text=` limit.
+
+## Palette
+
+Deep navy, cool slate-white and one cobalt accent. Tokens live in `:root` (`assets/css/base.css`):
+
+| Token | Value | Used for |
 | --- | --- | --- |
-| `--f-display` (and `--f-serif`) | **Fraunces** (variable: weight 300–600, optical size 9–144, roman + italic) | headlines, big numerals, the vermilion italic accent, quotes |
-| `--f-sans` | **Instrument Sans** (variable, 400–700, tabular figures) | body copy, UI, labels, the mock POS screens |
+| `--ink`, `--ink-2`, `--ink-3` | `#0a1b33`, `#12294a`, `#1b3a66` | dark chapters, device mocks, text on paper |
+| `--paper`, `--paper-2`, `--paper-3` | `#f3f6fa`, `#e8edf4`, `#d6dee9` | light chapters, surfaces, rules |
+| `--accent` | `#2f6beb` | fills: buttons, highlights, progress, dots |
+| `--on-accent` | `#ffffff` | text on an accent fill (4.7:1; dark ink on cobalt would fail at 3.5:1) |
+| `--accent-fg` | `#1f55cc` | accent as text on paper (6.0:1) |
+| `--accent-hi` | `#7aa2ff` | accent as text on navy (6.9:1; the fill colour is only 3.6:1 there) |
+| `--ok`, `--warn`, `--bad` | `#17b27b`, `#f4a62a`, `#ef4452` | semantic states |
 
-- Fraunces switches to its high-contrast display cut automatically as the size grows (`font-optical-sizing: auto`),
-  so tracking is only mildly negative (−0.02 to −0.04em); it was tuned per role and is **not** the tight tracking the old
-  grotesque needed. Weights are light (320–420) at display sizes and sturdier (440–520) in small UI.
-- Fraunces has no tabular figures; counters are left-aligned so changing digits never shifts neighbours. UI amounts use Instrument Sans.
-- The taka sign `৳` comes from Noto Sans/Serif Bengali, requested with `&text=%E0%A7%B3` so only that single glyph
-  downloads (about 11 KB instead of ~290 KB). If you add other Bengali text, drop the `text=` limit.
-- `font-synthesis: none` is on: a missing weight falls back instead of being faked.
-- Swapping typefaces is a token change plus a re-tune of the `letter-spacing` / `font-weight` / `clamp()` size on the display rules.
+Never put dark text on the accent fill, and never use `--accent` as small text on navy: use `--on-accent` and `--accent-hi`.
 
 ## Wiring the demo form
 

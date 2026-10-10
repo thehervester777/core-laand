@@ -115,7 +115,7 @@
       return s;
     });
 
-    // The wordmark is sized in vw for Fraunces (whose display cut is narrow). A wider fallback face, used when the
+    // The wordmark is sized in vw for the Pixel OS face. A wider fallback face, used when the
     // web font can't load, would clip its last letter, so shrink it just enough to fit. No-op once the real font is in.
     const first = chars[0];
     const last = chars[chars.length - 1];

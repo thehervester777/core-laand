@@ -61,27 +61,20 @@ Performance rules specific to this layer (checked with a scripted full-page scro
 
 ## Typography
 
-Two voices, set once in `:root` (`assets/css/base.css`):
+One family everywhere: **Aleo**, a modern slab serif with real weights (variable, 100-900) and true italics, linked from Google Fonts in `index.html`
+and set once in `:root` (`assets/css/base.css`) as `--f-aleo`. The tokens `--f-display`, `--f-serif` and `--f-sans` are kept as three names
+(the stylesheets were written for a display / body split) but all three resolve to Aleo.
 
-| Token | Family | Used for |
-| --- | --- | --- |
-| `--f-pixel` (also `--f-display`, `--f-serif`) | **Pixel OS** = VT323, a classic terminal / OS bitmap face | headlines, quotes, big numerals, brand, footer wordmark, the small uppercase labels |
-| `--f-text` (also `--f-sans`) | **Roboto Condensed** (variable, weights 400-700) | body copy, buttons, nav, tables, forms, badges, the text inside the device mocks |
-
-Rule of thumb: pixel for display and labels, Roboto Condensed for anything read in sentences and for every figure inside running or UI text.
-Rules written for the original display/sans split (headlines vs body) map onto the two tokens unchanged.
-
-- **Pixel OS** is declared as its own `@font-face` in `base.css` (served from Google's font CDN, scaled with `size-adjust: 118%` because its
-  em box is small) and preloaded in `index.html`. It has one weight and no italic, so it is never faux-bolded (`font-synthesis: none`); the accent
-  words that used to be italic are accent-coloured instead. It is monospaced, so big counters never shift their neighbours.
-- **Roboto Condensed** is linked from Google Fonts in `index.html`. It has real bold and tabular figures, which the UI uses
-  (`font-variant-numeric: tabular-nums`) wherever digits change.
-- No negative letter-spacing and ligatures off everywhere (pixel faces look wrong tightened or ligated).
-- **Why VT323 and not Pixelify Sans:** Pixelify Sans was tried first and rejected for display numerals: its digit 5 is drawn like an S (and 0 like O), so
-  `৳50B+` read `৳SOB+`. Bitcount draws S like `$`. VT323 has unambiguous digits and capitals. If you swap the pixel face again, check
-  `0 5 8 S O B 1 l I` and the capitals `C` / `O` at 12 px before committing.
-- Coverage is Latin. The taka sign `৳` comes from Noto Sans/Serif Bengali, requested with `&text=%E0%A7%B3` so only that single glyph
+- **Hierarchy** comes from size, weight and the italic accent words, not from a second family. Display sizes are light (weights 300-380) with mildly
+  negative tracking (about -0.01 to -0.018em); body and UI text are 400-600 with no tracking. The accent words (class `.serif`, and `em` in the
+  philosophy statement) are true Aleo italics in the accent colour. Small labels are tracked uppercase.
+- **Numerals:** Aleo has no tabular-figures feature, but its digits are within about 5% of equal width, so changing numbers barely move. Big counters are
+  left-aligned (as in the original design) so they never shift their neighbours.
+- **Coverage** is Latin. The taka sign `৳` comes from Noto Sans/Serif Bengali, requested with `&text=%E0%A7%B3` so only that single glyph
   downloads (about 11 KB instead of ~290 KB); `✓` falls back to the system font. If you add other Bengali text, drop the `text=` limit.
+- **History:** the page moved from Fraunces + Instrument Sans to a pixel face (Pixelify Sans, then VT323) and a pixel + Roboto Condensed mix before settling on
+  Aleo. The pixel faces were dropped because they read as cheap, and Pixelify Sans drew its digit 5 like an S (`৳50B+` read `৳SOB+`). If you swap
+  the face again, check `0 5 8 S O B 1 l I` and the capitals `C` / `O` at 12 px before committing.
 
 ## Palette
 

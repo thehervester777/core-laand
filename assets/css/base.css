@@ -3,19 +3,6 @@
    tokens · reset · type · buttons · header · preloader · HUD
    ========================================================= */
 
-/* The pixel typeface: VT323, a classic terminal / OS bitmap face, served from Google's font CDN and scaled up
-   18% (size-adjust) because its em box is small. The weight range 100-900 tells the browser this one face covers
-   every weight, so it never fakes a bold. Latin subset only; the taka sign comes from Noto Sans Bengali. */
-@font-face {
-  font-family: "Pixel OS";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  size-adjust: 118%;
-  src: local("VT323"), url(https://fonts.gstatic.com/s/vt323/v18/pxiKyp0ihIEF2isfFJU.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
 :root {
   /* palette */
   --ink: #0a1b33;
@@ -43,17 +30,13 @@
   --surface: #ffffff;
   --accent-text: var(--accent-fg);
 
-  /* type — two voices.
-     --f-pixel ("Pixel OS" = VT323, a classic terminal / OS bitmap face): headlines, quotes, big numerals, brand, wordmark
-     and the small uppercase labels. One weight, no italic; it is monospaced.
-     --f-text (Roboto Condensed): body copy, buttons, nav, tables, forms, badges, device mock text. Real 400-700 weights.
-     --f-display / --f-serif point at the pixel face, --f-sans at the text face, so rules written for the old
-     display/sans split keep working. The Bengali family only supplies the taka sign. */
-  --f-text: "Roboto Condensed", "Noto Sans Bengali", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --f-pixel: "Pixel OS", "Noto Sans Bengali", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --f-sans: var(--f-text);
-  --f-display: var(--f-pixel);
-  --f-serif: var(--f-display);
+  /* type — one family, Aleo (a modern slab serif with real weights 100-900 and true italics) for everything.
+     Hierarchy comes from size, weight and the italic accent words. Tokens are kept as three names so rules written for the
+     original display / sans split keep working, but all three resolve to Aleo. The Bengali family only supplies the taka sign. */
+  --f-aleo: "Aleo", "Noto Sans Bengali", "Rockwell", "Roboto Slab", Georgia, "Times New Roman", serif;
+  --f-sans: var(--f-aleo);
+  --f-display: var(--f-aleo);
+  --f-serif: var(--f-aleo);
 
   /* layout */
   --gutter: clamp(20px, 4.4vw, 76px);
@@ -104,8 +87,6 @@ body {
   text-rendering: optimizeLegibility;
   font-optical-sizing: auto;
   font-synthesis: none; /* never fake a bold or italic: a missing face falls back instead of looking smeared */
-  font-variant-ligatures: none; /* pixel faces draw ligatures as odd glyphs; keeping them off everywhere keeps the two voices consistent */
-  font-feature-settings: "liga" 0, "clig" 0;
   overflow-x: clip;
 }
 
@@ -163,15 +144,15 @@ html.is-loading { overflow: hidden; }
 .lm-dot { fill: var(--accent); }
 
 /* ---------- type ---------- */
-.h1, .h2 { font-family: var(--f-display); font-weight: 400; text-wrap: balance; }
-.h1 { font-size: clamp(2.6rem, 6.2vw, 6.9rem); line-height: 1; letter-spacing: 0; }
-.h2 { font-size: clamp(2.25rem, 4.8vw, 5.1rem); line-height: 1.02; letter-spacing: 0; }
+.h1, .h2 { font-family: var(--f-display); font-weight: 360; text-wrap: balance; }
+.h1 { font-size: clamp(2.6rem, 6.2vw, 6.9rem); line-height: 1; letter-spacing: -0.018em; }
+.h2 { font-size: clamp(2.25rem, 4.8vw, 5.1rem); line-height: 1.02; letter-spacing: -0.017em; }
 
 .serif {
   font-family: var(--f-serif);
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
+  font-style: italic;
+  font-weight: 320;
+  letter-spacing: -0.011em;
   font-size: 1em;
   line-height: 0.95;
   color: var(--accent-text);
@@ -187,7 +168,7 @@ html.is-loading { overflow: hidden; }
 
 .eyebrow {
   display: inline-flex; align-items: center; gap: 0.75em;
-  font: 600 0.8rem/1 var(--f-pixel);
+  font: 600 0.8rem/1 var(--f-sans);
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--fg-2);
 }
@@ -201,7 +182,7 @@ html.is-loading { overflow: hidden; }
   display: inline-flex; align-items: center;
   padding: 0.42em 0.85em; border-radius: 999px;
   border: 1px solid var(--line-strong);
-  font: 600 0.8rem/1 var(--f-pixel);
+  font: 600 0.8rem/1 var(--f-sans);
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--fg-2);
 }
@@ -220,7 +201,7 @@ html.is-loading { overflow: hidden; }
   display: inline-flex; align-items: center; justify-content: center; gap: 0.7em;
   height: var(--h); padding: 0 1.55em; border-radius: 999px;
   background: var(--btn-bg); color: var(--btn-fg);
-  font: 600 0.95rem/1 var(--f-sans); letter-spacing: 0; white-space: nowrap;
+  font: 600 0.95rem/1 var(--f-sans); letter-spacing: -0.003em; white-space: nowrap;
   transition: color 0.45s var(--e-out);
 }
 .btn::before {
@@ -286,7 +267,7 @@ main { position: relative; z-index: 2; }
   position: fixed; left: 16px; top: 50%; z-index: 90;
   display: none; align-items: center; gap: 14px; white-space: nowrap;
   color: var(--ink); opacity: 0.8; pointer-events: none;
-  font: 600 0.8rem/1 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase;
+  font: 600 0.8rem/1 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase;
   transform-origin: 0 0; transform: rotate(-90deg) translateX(-50%);
   will-change: transform; /* own layer: HUD updates never repaint the page */
   transition: color 0.5s var(--e-out);
@@ -332,14 +313,14 @@ html:not(.js) .header::before { opacity: 1; } /* static fallback (no JS): the ba
 .brand { display: inline-flex; align-items: center; gap: 11px; justify-self: start; }
 .brand__mark { width: 30px; height: 30px; color: currentColor; }
 .brand__name {
-  font: 500 1.3rem/1 var(--f-display); letter-spacing: 0;
+  font: 500 1.3rem/1 var(--f-display); letter-spacing: -0.01em;
 }
 
 @media (max-width: 1023.98px) { .header__bar { grid-template-columns: 1fr auto; } } /* nav hidden: brand left, menu button right */
 .nav { display: none; align-items: center; gap: clamp(20px, 2.4vw, 38px); }
 .nav a {
   position: relative; padding: 8px 0;
-  font-size: 0.9rem; font-weight: 500; letter-spacing: 0;
+  font-size: 0.9rem; font-weight: 500; letter-spacing: -0.003em;
   opacity: 0.78; transition: opacity 0.3s;
 }
 .nav a::after {
@@ -384,7 +365,7 @@ html:not(.js) .header::before { opacity: 1; } /* static fallback (no JS): the ba
 .menu__nav a {
   display: flex; align-items: baseline; gap: 16px;
   padding: 14px 0; border-bottom: 1px solid rgba(243,246,250, 0.12);
-  font: 400 clamp(2rem, 9vw, 3.2rem)/1.05 var(--f-display); letter-spacing: 0;
+  font: 380 clamp(2rem, 9vw, 3.2rem)/1.05 var(--f-display); letter-spacing: -0.014em;
 }
 .menu__nav a span { font: 600 0.72rem/1 var(--f-sans); letter-spacing: 0.14em; color: var(--accent-hi); }
 .menu__foot { display: grid; gap: 22px; justify-items: start; color: rgba(243,246,250, 0.7); font-size: 0.98rem; }
@@ -403,14 +384,14 @@ html:not(.js) .header::before { opacity: 1; } /* static fallback (no JS): the ba
 .pl-dot { fill: var(--accent); transform-origin: 32px 32px; }
 .preloader__word {
   display: flex; gap: 0.32em;
-  font: 500 clamp(1.5rem, 2.6vw, 2.1rem)/1.1 var(--f-display); letter-spacing: 0;
+  font: 460 clamp(1.5rem, 2.6vw, 2.1rem)/1.1 var(--f-display); letter-spacing: -0.01em;
 }
 .preloader__word span { display: inline-block; overflow: hidden; padding-bottom: 0.22em; margin-bottom: -0.08em; }
 .preloader__word span > i { display: inline-block; font-style: normal; }
 .preloader__meta {
   position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px;
   display: flex; justify-content: space-between; align-items: center;
-  font: 600 0.8rem/1 var(--f-pixel); letter-spacing: 0.1em; text-transform: uppercase;
+  font: 600 0.8rem/1 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase;
   color: rgba(243,246,250, 0.64);
 }
 .preloader__count { font-variant-numeric: tabular-nums; color: var(--paper); }

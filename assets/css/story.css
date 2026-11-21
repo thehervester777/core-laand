@@ -137,6 +137,51 @@
 }
 .engine.is-pinned .step__head { pointer-events: auto; }
 
+/* pinned on phones and tablets: heading, the live stage sized to the room that is left,
+   then the three modules as tabs sharing one description slot */
+@media (max-width: 1023.98px) {
+  .engine.is-pinned .engine__grid {
+    display: flex; flex-direction: column; gap: 0;
+    padding: calc(var(--header-h) + 6px) var(--gutter) 22px;
+  }
+  .engine.is-pinned .engine__copy { display: contents; }
+  .engine.is-pinned .engine__copy > .eyebrow { order: 1; align-self: flex-start; }
+  .engine.is-pinned .engine__copy .h2 { order: 2; margin-top: 12px; max-width: none; font-size: clamp(1.9rem, 7.2vw, 3rem); }
+  .engine.is-pinned .engine__copy .lead { display: none; } /* each module's own description says it more precisely */
+  .engine.is-pinned .engine__visual {
+    order: 3; flex: 1 1 auto; min-height: 0; max-width: none; margin-top: 16px;
+    display: flex; align-items: center; justify-content: center;
+    container-type: size;
+  }
+  .engine.is-pinned .stage { width: min(100cqw, 100cqh * 640 / 520); }
+  .engine.is-pinned .steps {
+    order: 4; margin-top: 14px; border-top: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 12px;
+  }
+  .engine.is-pinned .step[data-step] > .step__head { grid-row: 1; }
+  .engine.is-pinned .step[data-step="0"] > .step__head { grid-column: 1; }
+  .engine.is-pinned .step[data-step="1"] > .step__head { grid-column: 2; }
+  .engine.is-pinned .step[data-step="2"] > .step__head { grid-column: 3; }
+  .engine.is-pinned .step__head {
+    flex-direction: column; align-items: flex-start; gap: 6px;
+    padding: 10px 0 12px; border-bottom: 2px solid var(--line);
+    transition: color 0.5s var(--e-out), border-color 0.5s var(--e-out);
+  }
+  .engine.is-pinned .step.is-active .step__head { border-bottom-color: var(--accent); }
+  .engine.is-pinned .step__num { width: auto; }
+  .engine.is-pinned .step__title { font-size: clamp(0.94rem, 3.4vw, 1.15rem); line-height: 1.2; }
+  .engine.is-pinned .step__body { grid-row: 2; grid-column: 1 / -1; padding-top: 14px; }
+  .engine.is-pinned .step__body p { padding-left: 0; max-width: 60ch; font-size: 0.95rem; line-height: 1.5; }
+  .engine.is-pinned .tags { padding: 12px 0 0; }
+  .engine.is-pinned .engine__progress { order: 5; margin-top: 14px; }
+}
+@media (max-width: 760px) {
+  .engine.is-pinned .stage { width: min(100cqw, 100cqh * 420 / 540); }
+}
+@media (max-width: 1023.98px) and (max-height: 760px) {
+  .engine.is-pinned .tags { display: none; }
+}
+
 /* ---------- stage (device-like panel) ---------- */
 .engine__visual { width: 100%; justify-self: end; max-width: 780px; }
 .stage { container-type: inline-size; width: 100%; }

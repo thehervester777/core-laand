@@ -142,7 +142,7 @@
       quotes.forEach((q, i) => {
         gsap.timeline({
           defaults: { ease: 'none' },
-          scrollTrigger: { trigger: q, start: 'top 84%', end: 'bottom 16%', scrub: true },
+          scrollTrigger: { trigger: q, start: 'top 84%', end: 'bottom 16%', scrub: CA.scrub },
         })
           .fromTo(q, { opacity: DIM, y: 56 }, { opacity: 1, y: 0, duration: 0.32 })
           .to(q, { opacity: 1, y: 0, duration: 0.36 })

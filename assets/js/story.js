@@ -213,8 +213,8 @@
         scenes.forEach((sc, k) => { if (v && k === current) sc.resume(); else sc.suspend(); });
       }, { margin: '0px' });
 
-    /* ---------- desktop: pinned, scroll-driven ---------- */
-    mm.add(CA.mq.desktop, () => {
+    /* ---------- every screen: pinned, scroll-driven ---------- */
+    mm.add(CA.mq.pinned, () => {
       engine.classList.add('is-pinned');
       current = -1;
       const setBar = gsap.quickSetter(bar, 'scaleX');
@@ -266,8 +266,8 @@
       };
     });
 
-    /* ---------- mobile: stage cycles on its own ---------- */
-    mm.add(CA.mq.mobile, () => {
+    /* ---------- short landscape screens: stage cycles on its own ---------- */
+    mm.add(CA.mq.flow, () => {
       current = -1;
       let idx = 0;
       let timer = null;

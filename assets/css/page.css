@@ -1,0 +1,51 @@
+/* =========================================================
+   Simple pages — privacy · terms · 404
+   (base.css supplies tokens, type, buttons and the brand mark)
+   ========================================================= */
+.page-top {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  height: var(--header-h); padding-inline: var(--gutter);
+  background: rgba(243,246,250, 0.94); border-bottom: 1px solid rgba(10,27,51, 0.08);
+}
+.page-top .link { font-size: 0.92rem; }
+
+.doc {
+  max-width: 760px; margin-inline: auto;
+  padding: clamp(48px, 9vh, 110px) var(--gutter) clamp(72px, 12vh, 140px);
+}
+.doc .eyebrow { margin-bottom: 20px; }
+.doc h1 { font: 360 clamp(2.4rem, 6vw, 4.2rem)/1.04 var(--f-display); letter-spacing: -0.017em; }
+.doc .updated { margin-top: 16px; color: var(--fg-3); font-size: 0.92rem; }
+.doc .intro { margin-top: 28px; font-size: 1.12rem; line-height: 1.6; color: var(--fg-2); }
+.doc h2 {
+  margin-top: 52px; padding-top: 28px; border-top: 1px solid var(--line);
+  font: 420 clamp(1.4rem, 2.4vw, 1.8rem)/1.2 var(--f-display); letter-spacing: -0.01em;
+}
+.doc p, .doc li { color: var(--fg-2); line-height: 1.7; }
+.doc p { margin-top: 14px; }
+.doc ul { margin-top: 14px; display: grid; gap: 8px; }
+.doc li { position: relative; padding-left: 22px; }
+.doc li::before { content: ""; position: absolute; left: 4px; top: 0.72em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.doc b, .doc strong { color: var(--fg); }
+.doc a:not(.btn) { color: var(--accent-fg); text-decoration: underline; text-underline-offset: 3px; }
+
+.page-foot {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px;
+  padding: 24px var(--gutter) 32px; border-top: 1px solid rgba(10,27,51, 0.12);
+  font-size: 0.85rem; color: rgba(10,27,51, 0.68);
+}
+.page-foot nav { display: flex; gap: 22px; }
+.page-foot a:hover { color: var(--ink); }
+
+/* 404 */
+.lost {
+  min-height: calc(100vh - var(--header-h)); min-height: calc(100svh - var(--header-h));
+  display: grid; place-content: center; justify-items: center; gap: 22px;
+  padding: 48px var(--gutter); text-align: center;
+}
+.lost__code { font: 300 clamp(6rem, 22vw, 13rem)/0.9 var(--f-display); letter-spacing: -0.03em; color: var(--ink); }
+.lost__code em { font-style: italic; color: var(--accent-fg); }
+.lost h1 { font: 380 clamp(1.8rem, 4vw, 2.6rem)/1.1 var(--f-display); letter-spacing: -0.014em; }
+.lost p { max-width: 42ch; color: var(--fg-2); }
+.lost .btn { margin-top: 8px; }

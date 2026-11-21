@@ -37,7 +37,6 @@
   padding-inline: var(--gutter);
 }
 .hero__title {
-  margin-top: clamp(18px, 3.2vh, 32px);
   font-family: var(--f-display); font-weight: 380;
   font-size: clamp(2.3rem, min(5.2vw, 9.2vh), 6.5rem);
   line-height: 0.99; letter-spacing: -0.015em;
@@ -280,8 +279,6 @@
 /* ---------- mobile device layout ---------- */
 @media (max-width: 760px) {
   .hero { padding-top: calc(var(--header-h) + 22px); }
-  .hero__eyebrow { display: block; max-width: 30ch; margin-inline: auto; text-align: center; line-height: 1.75; font-size: 0.78rem; letter-spacing: 0.1em; }
-  .hero__eyebrow .eyebrow__dot { display: inline-block; vertical-align: middle; margin-right: 0.7em; position: relative; top: -1px; }
   .hero__title { font-size: clamp(1.8rem, 7.9vw, 2.8rem); font-weight: 400; letter-spacing: -0.015em; line-height: 1.02; }
   .hero__title .serif { font-size: 1em; font-weight: 400; }
   .hero__title .ln { text-wrap: balance; }

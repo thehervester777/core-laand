@@ -9,18 +9,55 @@
   if (!CA) return;
   const { $, $$ } = CA;
 
-  /**
-   * Demo request hand-off.
-   * The page ships as a static front-end, so this resolves locally.
-   * Replace the body with a real call, e.g.
-   *   const res = await fetch('/api/demo-request', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-   *   if (!res.ok) throw new Error('Request failed');
-   */
-  CA.submitDemo = (data) =>
-    new Promise((resolve) => {
-      console.info('[Core Agency] demo request (not sent — wire up CA.submitDemo):', data);
-      setTimeout(resolve, 900);
-    });
+  /* ---------- demo request delivery ----------
+     Requests are emailed through Web3Forms (key in assets/js/config.js). The visitor can also
+     continue on WhatsApp, and WhatsApp is the fallback whenever email can't be sent, so a lead is never lost. */
+  const CFG = window.CA_CONFIG || {};
+  const waNumber = String(CFG.whatsapp || '').replace(/\D/g, '');
+
+  CA.whatsappLink = (data = {}) => {
+    if (!waNumber) return '';
+    const lines = [`Hi ${CFG.siteName || 'Core Agency'}, I'd like a demo.`];
+    if (data.business) lines.push(`Business: ${data.business}`);
+    if (data.name) lines.push(`Name: ${data.name}`);
+    if (data.type) lines.push(`Type: ${data.type}`);
+    if (data.outlets) lines.push(`Outlets: ${data.outlets}`);
+    if (data.city) lines.push(`Area: ${data.city}`);
+    if (data.phone) lines.push(`Phone: ${data.phone}`);
+    return `https://wa.me/${waNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
+  };
+
+  CA.submitDemo = async (data) => {
+    if (!CFG.web3formsKey) throw new Error('no-email-key');
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 15000);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: CFG.web3formsKey,
+          subject: `New demo request — ${data.business || 'website'}`,
+          from_name: `${CFG.siteName || 'Core Agency'} website`,
+          replyto: data.email || undefined,
+          'Business name': data.business,
+          'Contact name': data.name,
+          Phone: data.phone,
+          Email: data.email || '—',
+          'Business type': data.type,
+          Outlets: data.outlets,
+          'City or area': data.city || '—',
+          'Best time to call': data.time,
+          Notes: data.notes || '—',
+        }),
+        signal: ctrl.signal,
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || json.success === false) throw new Error(json.message || 'send-failed');
+    } finally {
+      clearTimeout(timer);
+    }
+  };
 
   const initForm = () => {
     const form = $('[data-form]');
@@ -28,6 +65,8 @@
     const done = $('[data-done]', form);
     const submit = $('button[type="submit"]', form);
     const labels = $$('.roll__in > span', submit);
+    const failBox = $('[data-form-fail]', form);
+    const waLinks = $$('[data-wa]', form);
 
     const rules = {
       business: (v) => (v.trim() ? '' : 'Please tell us your business name.'),
@@ -54,10 +93,25 @@
     form.addEventListener('change', (e) => { if (e.target.name) check(e.target); });
 
     const setLabel = (text) => labels.forEach((l) => { l.textContent = text; });
+    const setWhatsApp = (data) => {
+      const href = CA.whatsappLink(data);
+      waLinks.forEach((a) => { a.hidden = !href; if (href) a.href = href; });
+    };
+    setWhatsApp();
+
+    const showDone = () => {
+      done.hidden = false;
+      if (!CA.reduced) {
+        gsap.fromTo(done, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 });
+        gsap.from(done.children, { y: 24, autoAlpha: 0, duration: 0.8, stagger: 0.08, delay: 0.15, ease: 'expo.out' });
+      }
+      const h = $('h3', done);
+      if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+    };
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if (form.elements.website && form.elements.website.value) return; // honeypot
+      if (form.elements.website && form.elements.website.value) return; // honeypot: bots fill it, people never see it
 
       const results = controls().map(check);
       if (results.includes(false)) {
@@ -67,25 +121,22 @@
         return;
       }
 
+      const data = Object.fromEntries(new FormData(form));
+      delete data.website;
+      setWhatsApp(data);
+      if (failBox) failBox.hidden = true;
       const original = labels[0] ? labels[0].textContent : '';
       submit.disabled = true;
       setLabel('Sending…');
       try {
-        await CA.submitDemo(Object.fromEntries(new FormData(form)));
-        done.hidden = false;
-        if (!CA.reduced) {
-          gsap.fromTo(done, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 });
-          gsap.from(done.children, { y: 24, autoAlpha: 0, duration: 0.8, stagger: 0.08, delay: 0.15, ease: 'expo.out' });
-        }
-        const done_h3 = $('h3', done);
-        if (done_h3) { done_h3.setAttribute('tabindex', '-1'); done_h3.focus({ preventScroll: true }); }
+        await CA.submitDemo(data);
+        showDone();
       } catch (err) {
-        console.error(err);
-        setLabel('Something went wrong — try again');
-        setTimeout(() => setLabel(original), 2600);
+        if (err.message !== 'no-email-key') console.error('[Core Agency] demo request not emailed', err);
+        if (failBox) { failBox.hidden = false; failBox.focus({ preventScroll: false }); }
       } finally {
         submit.disabled = false;
-        if (labels[0] && labels[0].textContent === 'Sending…') setLabel(original);
+        setLabel(original);
       }
     });
 
@@ -96,6 +147,8 @@
         $$('.field.is-invalid', form).forEach((f) => f.classList.remove('is-invalid'));
         $$('.field__err', form).forEach((n) => { n.textContent = ''; });
         done.hidden = true;
+        if (failBox) failBox.hidden = true;
+        setWhatsApp();
         const first = $('input', form);
         if (first) first.focus({ preventScroll: true });
       });
@@ -136,16 +189,47 @@
     window.addEventListener('resize', refit);
     if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', refit);
 
+    // The page lifts off the footer like a curtain, on any screen where the whole footer fits.
+    const footer = $('[data-footer]');
+    if (footer) {
+      mm.add(CA.mq.pinned, () => {
+        const fit = () => footer.classList.toggle('is-reveal', footer.offsetHeight <= window.innerHeight - 24);
+        fit();
+        ScrollTrigger.addEventListener('refreshInit', fit);
+        return () => { ScrollTrigger.removeEventListener('refreshInit', fit); footer.classList.remove('is-reveal'); };
+      });
+    }
+
     mm.add(CA.mq.motion, () => {
       gsap.set(chars, { yPercent: 108 });
       gsap.to(chars, {
         yPercent: 0, ease: 'none', stagger: 0.06,
-        scrollTrigger: { trigger: '.chapter--last', start: 'bottom 98%', end: 'bottom 28%', scrub: true },
+        scrollTrigger: { trigger: '.chapter--last', start: 'bottom 98%', end: 'bottom 28%', scrub: CA.scrub },
       });
     });
   };
 
+  /* ---------- floating chat button ---------- */
+  const initFab = () => {
+    const fab = $('[data-fab]');
+    if (!fab) return;
+    if (!waNumber) { fab.hidden = true; return; }
+    const hello = `Hi ${CFG.siteName || 'Core Agency'}, I'd like to know more about your POS.`;
+    fab.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(hello)}`;
+    // step aside once the footer comes into view, where it would sit on top of "Back to top".
+    // (Measured from the end of the page content: on desktop the footer sits fixed behind the page,
+    // so the footer itself always counts as "on screen".)
+    const last = $('.chapter--last');
+    if (last) {
+      ScrollTrigger.create({
+        trigger: last, start: 'bottom bottom',
+        onToggle: (self) => fab.classList.toggle('is-away', self.isActive),
+      });
+    }
+  };
+
   CA.init.close = (mm) => {
+    initFab();
     initForm();
     initFooter(mm);
 

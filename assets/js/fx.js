@@ -262,7 +262,7 @@
         gsap.set(words, { opacity: 0.3 }); // still readable before it is reached
         gsap.to(words, {
           opacity: 1, ease: 'none', stagger: { amount: 0.9 },
-          scrollTrigger: { trigger: el, start: 'top 90%', end: 'bottom 58%', scrub: true },
+          scrollTrigger: { trigger: el, start: 'top 90%', end: 'bottom 58%', scrub: CA.scrub },
         });
       });
     });
@@ -300,12 +300,12 @@
     });
 
     // the widget glides up a beat behind its copy, then settles when the card docks
-    mm.add(CA.mq.desktop, () => {
+    mm.add(CA.mq.pinned, () => {
       prepared.forEach(({ card, widget }) => {
         if (!widget) return;
         gsap.fromTo(widget, { y: 64 }, {
           y: 0, ease: 'none',
-          scrollTrigger: { trigger: card, start: 'top bottom', end: 'top 38%', scrub: true },
+          scrollTrigger: { trigger: card, start: 'top bottom', end: 'top 38%', scrub: CA.scrub },
         });
       });
     });
@@ -350,7 +350,7 @@
         const a = 12 + i * 9;
         gsap.fromTo(el, { y: a }, {
           y: -a, ease: 'none',
-          scrollTrigger: { trigger: el.closest('.stats') || el, start: 'top bottom', end: 'bottom top', scrub: true },
+          scrollTrigger: { trigger: el.closest('.stats') || el, start: 'top bottom', end: 'bottom top', scrub: CA.scrub },
         });
       });
     });
@@ -468,7 +468,6 @@
   };
 
   CA.init.fx = (mm) => {
-    safe('progress', () => setupProgress());
     safe('cursor', () => setupCursor(mm));
     safe('hero depth', () => setupHeroDepth(mm));
     safe('tilt', () => setupTilt(mm));

@@ -168,7 +168,6 @@
     const device = $('[data-device]', intro);
     const canvas = $('[data-rings]', intro);
     const chips = $$('[data-chip]', intro);
-    const eyebrow = $('.hero__eyebrow', intro);
     const lead = $('.hero__lead', intro);
     const ctas = $$('.hero__cta > *', intro);
     const header = $('.header');
@@ -187,7 +186,7 @@
 
       // initial hidden state for the entrance (the preloader is covering the page)
       gsap.set(titleWords, { yPercent: 118 });
-      gsap.set([eyebrow, lead, ...ctas], { autoAlpha: 0, y: 26 });
+      gsap.set([lead, ...ctas], { autoAlpha: 0, y: 26 });
       gsap.set(devIn, { y: 170, autoAlpha: 0, rotateX: 14, transformPerspective: 1600, transformOrigin: '50% 100%' });
       gsap.set(chips, { autoAlpha: 0, scale: 0.82 });
       gsap.set(header, { yPercent: -100 });
@@ -200,7 +199,6 @@
       if (CA.reduced) return gsap.timeline();
       const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
       tl.to(header, { yPercent: 0, duration: 1, ease: 'power3.out' }, 0.2)
-        .to(eyebrow, { autoAlpha: 1, y: 0, duration: 1 }, 0.05)
         .to(titleWords, { yPercent: 0, duration: 1.35, stagger: 0.055 }, 0.1)
         .to([lead, ...ctas], { autoAlpha: 1, y: 0, duration: 1.1, stagger: 0.09 }, 0.62)
         .to(rings.intro, { s: 1, a: 1, duration: 2.4, ease: 'power3.out' }, 0.2)
@@ -209,7 +207,7 @@
         .add(() => {
           // drop the temporary transforms again so nothing stays promoted for no reason
           gsap.set(titleWords, { clearProps: 'transform' });
-          gsap.set([eyebrow, lead, ...ctas], { clearProps: 'transform,opacity,visibility' });
+          gsap.set([lead, ...ctas], { clearProps: 'transform,opacity,visibility' });
           gsap.set(devIn, { clearProps: 'transform,opacity,visibility' });
           state.introDone = true;
           applyLoop();
@@ -307,8 +305,8 @@
       };
     });
 
-    /* ---------- desktop: pinned hero → iris → philosophy ---------- */
-    mm.add(CA.mq.desktop, () => {
+    /* ---------- every screen: pinned hero → iris → philosophy ---------- */
+    mm.add(CA.mq.pinned, () => {
       intro.classList.add('is-pinned');
       gsap.set(philWords, { opacity: 0.14 });
       gsap.set(phil, { autoAlpha: 0 });
@@ -336,7 +334,7 @@
           start: 'top top',
           end: () => '+=' + Math.round(H() * 3.2),
           pin: true,
-          scrub: true,
+          scrub: CA.scrub,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: () => {
@@ -372,16 +370,16 @@
       };
     });
 
-    /* ---------- mobile: no pin, words light up on scroll ---------- */
-    mm.add(CA.mq.mobile, () => {
+    /* ---------- short landscape screens: no pin, words light up on scroll ---------- */
+    mm.add(CA.mq.flow, () => {
       gsap.set(philWords, { opacity: 0.14 });
       gsap.to(philWords, {
         opacity: 1, ease: 'none', stagger: { amount: 1 },
-        scrollTrigger: { trigger: '.philosophy__text', start: 'top 82%', end: 'bottom 52%', scrub: true },
+        scrollTrigger: { trigger: '.philosophy__text', start: 'top 82%', end: 'bottom 52%', scrub: CA.scrub },
       });
       const stopVis = CA.visible(hero, (v) => state.setMode(v ? 'play' : 'pause'), { margin: '0px' });
       // light parallax on the device
-      gsap.to(dev, { y: -40, ease: 'none', scrollTrigger: { trigger: stage, start: 'top bottom', end: 'bottom top', scrub: true } });
+      gsap.to(dev, { y: -40, ease: 'none', scrollTrigger: { trigger: stage, start: 'top bottom', end: 'bottom top', scrub: CA.scrub } });
       return () => stopVis();
     });
 

@@ -61,6 +61,7 @@
   padding: calc(var(--header-h) + 14px) 0 30px;
 }
 /* the moving track is clipped + contained, so its transform never forces the ancestors to re-measure their overflow */
+.industries.is-pinned .industries__head { width: 100%; } /* auto margins in the column layout would otherwise shrink-wrap it */
 .industries.is-pinned .hscroll {
   flex: 1; min-height: 0; display: flex; align-items: center; margin-top: 0;
   padding-block: 30px; overflow: clip; contain: layout paint;
@@ -76,6 +77,22 @@
   display: flex; align-items: center; gap: 22px;
   padding: 0 var(--gutter); margin-top: 6px;
   font: 600 0.8rem/1 var(--f-sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-2);
+}
+@media (max-width: 1023.98px) {
+  .industries.is-pinned { min-height: 0; padding-bottom: 22px; }
+  .industries.is-pinned .industries__head { gap: 12px; }
+  .industries.is-pinned .industries__head .h2 { margin-top: 12px; }
+  .industries.is-pinned .industries__head .lead { font-size: 0.98rem; line-height: 1.5; }
+  .industries.is-pinned .hscroll { padding-block: 18px; }
+  .industries.is-pinned .hscroll__track { height: min(100%, 520px); }
+  @media (min-width: 600px) { .industries.is-pinned .hscroll__track { height: min(100%, 640px); } .industries.is-pinned .icard { flex-basis: 420px; } }
+  .industries.is-pinned .icard { flex-basis: min(78vw, 380px); height: auto; padding-bottom: 22px; }
+  .industries.is-pinned .icard h3 { font-size: 1.5rem; padding-top: 12px; }
+  .industries.is-pinned .icard__meta { padding-top: 16px; }
+  .industries.is-pinned .industries__hint { display: none; }
+}
+@media (max-width: 1023.98px) and (max-height: 720px) {
+  .industries.is-pinned .industries__head .lead { display: none; }
 }
 .industries__count { font-variant-numeric: tabular-nums; }
 .industries__count b { color: var(--fg); }
@@ -144,11 +161,17 @@
 .ucard__shade { position: absolute; inset: 0; z-index: 3; border-radius: inherit; background: var(--ink); opacity: 0; pointer-events: none; will-change: opacity; }
 @media (min-width: 1024px) {
   .ucard {
-    position: sticky; top: calc(var(--header-h) + 14px + var(--i) * 22px);
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center;
     min-height: min(70vh, 620px); margin-bottom: clamp(36px, 10vh, 120px);
-    will-change: transform;
   }
+}
+/* stacking (switched on by solutions.js only when every card fits the screen) */
+.stack.is-stacked .ucard {
+  position: sticky; top: calc(var(--header-h) + 12px + var(--i) * 12px);
+  will-change: transform;
+}
+@media (min-width: 1024px) {
+  .stack.is-stacked .ucard { top: calc(var(--header-h) + 14px + var(--i) * 22px); }
 }
 .ucard__kicker {
   display: inline-flex; align-items: center; gap: 10px;
@@ -282,16 +305,23 @@
 @media (max-width: 560px) {
   .srow { grid-template-columns: minmax(0, 1fr) auto; }
   .srow__bar { display: none; }
-  .wg { min-height: 360px; }
+  .wg { min-height: 0; gap: 12px; }
+  .ucard { gap: 18px; padding: 20px; border-radius: var(--radius-l); }
+  .ucard h3 { margin-top: 12px; font-size: clamp(1.7rem, 7.6vw, 2.2rem); max-width: none; }
+  .ucard__copy > p { margin-top: 12px; font-size: 0.95rem; line-height: 1.5; }
+  .checks { gap: 8px; margin-top: 14px; }
+  .checks li { font-size: 0.9rem; }
+  .srow, .erow, .trow { padding: 12px 14px; }
+  .floor { min-height: 200px; }
 }
 
 /* ---------- mobile entrances ---------- */
 @media (max-width: 1023.98px) and (prefers-reduced-motion: no-preference) {
-  /* each icard slides up once as it enters the horizontal scroll viewport */
-  .icard {
+  /* each icard slides up once as it enters the swipe gallery (short landscape screens, where nothing is pinned) */
+  .industries:not(.is-pinned) .icard {
     opacity: 0;
     transform: translateY(28px);
     transition: opacity 0.65s var(--e-out), transform 0.65s var(--e-out);
   }
-  .icard.is-entered { opacity: 1; transform: translateY(0); }
+  .industries:not(.is-pinned) .icard.is-entered { opacity: 1; transform: translateY(0); }
 }

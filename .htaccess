@@ -1,0 +1,64 @@
+# =========================================================
+#  Core Agency — Apache settings for cPanel hosting
+#  Upload together with index.html into public_html.
+# =========================================================
+
+Options -Indexes
+DirectoryIndex index.html
+AddDefaultCharset utf-8
+ErrorDocument 404 /404.html
+
+AddType application/manifest+json .webmanifest
+AddType font/woff2 .woff2
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Always use HTTPS (turn on AutoSSL / Let's Encrypt in cPanel first)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # One address for search engines: www.example.com → example.com
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+  # /index.html → /
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^ / [L,R=301]
+
+  # Short addresses also work: /privacy → privacy.html, /terms → terms.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+
+  # Never serve hidden or development files if they are uploaded by mistake
+  RewriteRule (^|/)\.(?!well-known/) - [F,L]
+  RewriteRule ^(README\.md|video/) - [F,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=15552000" env=HTTPS
+  # Everything loads from this server; the demo form posts to Web3Forms.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'"
+
+  # Caching: pages always fresh; styles and scripts for a day; fonts, libraries and images for longer
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  <FilesMatch "\.(woff2|png|svg|webmanifest)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/manifest+json application/xml text/xml text/plain image/svg+xml
+</IfModule>

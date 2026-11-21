@@ -195,7 +195,7 @@
     const ucards = $$('[data-ucard]');
     const widgets = ucards.map(buildWidget); // interactive in every mode
 
-    /* industries · desktop: pinned horizontal scroll */
+    /* industries · every screen: pinned horizontal scroll */
     if (sec) {
       const track = $('[data-track]', sec);
       const bar = $('[data-h-bar]', sec);
@@ -203,7 +203,7 @@
       const fx = cards.map((c, i) => artFx(c, i));
       const total = 7;
 
-      mm.add(CA.mq.desktop, () => {
+      mm.add(CA.mq.pinned, () => {
         sec.classList.add('is-pinned');
         const vw = () => document.documentElement.clientWidth;
         const dist = () => Math.max(0, track.scrollWidth - vw());
@@ -218,7 +218,7 @@
             start: 'top top',
             end: () => '+=' + Math.round(dist() * 1.1),
             pin: true,
-            scrub: true,
+            scrub: CA.scrub,
             anticipatePin: 1,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
@@ -237,7 +237,7 @@
           if (svg && i < total) {
             gsap.fromTo(svg, { xPercent: -5, scale: 1.08 }, {
               xPercent: 5, scale: 1.08, ease: 'none',
-              scrollTrigger: { trigger: card, containerAnimation: move, start: 'left right', end: 'right left', scrub: true },
+              scrollTrigger: { trigger: card, containerAnimation: move, start: 'left right', end: 'right left', scrub: CA.scrub },
             });
           }
         });
@@ -245,8 +245,8 @@
         return () => { stops.forEach((s) => s()); sec.classList.remove('is-pinned'); fx.forEach((f) => f.pause()); };
       });
 
-      /* industries · mobile: native swipe, card entrance + ambient art */
-      mm.add(CA.mq.mobile, () => {
+      /* industries · short landscape screens: native swipe, card entrance + ambient art */
+      mm.add(CA.mq.flow, () => {
         const io = new IntersectionObserver((entries) => {
           entries.forEach((e) => {
             const i = cards.indexOf(e.target);
@@ -264,32 +264,8 @@
       });
     }
 
-    /* use cases · desktop: cards stack, the buried ones recede */
-    mm.add(CA.mq.desktop, () => {
-      const shades = [];
-      ucards.forEach((card, i) => {
-        const shade = document.createElement('span');
-        shade.className = 'ucard__shade';
-        card.appendChild(shade);
-        shades.push(shade);
-        const next = ucards[i + 1];
-        if (!next) return;
-        gsap.timeline({
-          defaults: { ease: 'none' },
-          scrollTrigger: {
-            trigger: next, start: 'top bottom',
-            end: () => 'top ' + parseFloat(getComputedStyle(next).top),
-            scrub: true, invalidateOnRefresh: true,
-          },
-        })
-          .to(card, { scale: 0.935 }, 0)
-          .to(shade, { opacity: 0.2 }, 0);
-      });
-      return () => shades.forEach((s) => s.remove());
-    });
-
-    /* use cases · mobile: staggered scroll entrance */
-    mm.add(CA.mq.mobile, () => {
+    /* use cases · entrance for short landscape screens, where the cards do not stack */
+    const slideIn = () => {
       ucards.forEach((card, i) => {
         if (CA.isPast(card)) return;
         gsap.set(card, { autoAlpha: 0, y: 56 });
@@ -304,7 +280,55 @@
           },
         });
       });
+    };
+
+    /* use cases · cards stick and stack, the buried ones recede.
+       A card taller than the screen (phones) first scrolls fully into view, then holds with its
+       bottom edge on the bottom of the screen while the next card slides over it, so every line stays readable. */
+    const stack = $('[data-stack]');
+    mm.add(CA.mq.pinned, () => {
+      if (!stack || !ucards.length) return;
+      stack.classList.add('is-stacked');
+      const fit = () => {
+        ucards.forEach((card) => {
+          card.style.top = '';
+          const room = window.innerHeight - 12 - card.offsetHeight;
+          const tall = room < parseFloat(getComputedStyle(card).top);
+          card.style.top = tall ? room + 'px' : '';
+          card.style.transformOrigin = tall ? '50% 100%' : ''; // recede toward the edge that stays on screen
+        });
+      };
+      fit();
+      ScrollTrigger.addEventListener('refreshInit', fit);
+      const shades = [];
+      ucards.forEach((card, i) => {
+        const shade = document.createElement('span');
+        shade.className = 'ucard__shade';
+        card.appendChild(shade);
+        shades.push(shade);
+        const next = ucards[i + 1];
+        if (!next) return;
+        gsap.timeline({
+          defaults: { ease: 'none' },
+          scrollTrigger: {
+            trigger: next, start: 'top bottom',
+            end: () => 'top ' + parseFloat(getComputedStyle(next).top),
+            scrub: CA.scrub, invalidateOnRefresh: true,
+          },
+        })
+          .to(card, { scale: 0.935 }, 0)
+          .to(shade, { opacity: 0.2 }, 0);
+      });
+      return () => {
+        ScrollTrigger.removeEventListener('refreshInit', fit);
+        shades.forEach((s) => s.remove());
+        ucards.forEach((card) => { card.style.top = ''; card.style.transformOrigin = ''; });
+        stack.classList.remove('is-stacked');
+      };
     });
+
+    /* use cases · short landscape screens: staggered scroll entrance */
+    mm.add(CA.mq.flow, slideIn);
 
     /* use cases · widgets run only while on screen (IntersectionObserver sees sticky cards correctly) */
     mm.add(CA.mq.motion, () => {

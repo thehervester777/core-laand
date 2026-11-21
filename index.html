@@ -2,22 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Core Agency — Intelligent cloud POS for Bangladesh</title>
   <meta name="description" content="Core Agency builds cloud POS for Bangladesh: an offline-first register, bKash and Nagad checkout, NBR VAT invoicing and real-time multi-branch sync for retail, pharmacy, restaurant and distribution businesses.">
+  <link rel="canonical" href="https://coreagency.com.bd/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#f3f6fa">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Core Agency — Intelligent cloud POS for Bangladesh">
-  <meta property="og:description" content="The first-ever POS &amp; Management provider that dares to do what nobody else dares.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <!-- Aleo: the single typeface (variable weights 100-900, roman + italic) -->
-  <link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <!-- Bengali families are limited to one glyph, the taka sign (U+09F3), so ৳ matches the type around it (~11 KB instead of ~290 KB) -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..700&family=Noto+Serif+Bengali:wght@100..700&text=%E0%A7%B3&display=swap" rel="stylesheet">
+  <!-- sharing (Facebook, WhatsApp, LinkedIn, X) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Core Agency">
+  <meta property="og:locale" content="en_BD">
+  <meta property="og:url" content="https://coreagency.com.bd/">
+  <meta property="og:title" content="Core Agency — Intelligent cloud POS for Bangladesh">
+  <meta property="og:description" content="Offline-first POS with bKash &amp; Nagad checkout, NBR VAT invoicing and real-time multi-branch sync — built for retail, pharmacy, restaurant and distribution businesses in Bangladesh.">
+  <meta property="og:image" content="https://coreagency.com.bd/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Core Agency — Intelligent cloud POS for Bangladesh">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Core Agency — Intelligent cloud POS for Bangladesh">
+  <meta name="twitter:description" content="Offline-first POS with bKash &amp; Nagad checkout, NBR VAT invoicing and real-time multi-branch sync.">
+  <meta name="twitter:image" content="https://coreagency.com.bd/assets/og-image.png">
+
+  <!-- icons -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- the two faces the first screen needs; everything is self-hosted -->
+  <link rel="preload" href="assets/fonts/aleo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/aleo-latin-wght-italic.woff2" as="font" type="font/woff2" crossorigin>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://coreagency.com.bd/#org",
+        "name": "Core Agency",
+        "url": "https://coreagency.com.bd/",
+        "logo": "https://coreagency.com.bd/assets/apple-touch-icon.png"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Core Agency POS",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Cloud POS for Bangladesh with an offline-first register, bKash and Nagad checkout, NBR VAT invoicing and real-time multi-branch sync.",
+        "publisher": { "@id": "https://coreagency.com.bd/#org" },
+        "areaServed": { "@type": "Country", "name": "Bangladesh" }
+      }
+    ]
+  }
+  </script>
 
   <script>document.documentElement.classList.add('js', 'is-loading');</script>
   <link rel="stylesheet" href="assets/css/base.css">
@@ -53,6 +93,8 @@
       <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
       <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11.3a7 7 0 0 0-14 0C5 15 12 21 12 21z"/><circle cx="12" cy="9.6" r="2.4"/></symbol>
       <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/></symbol>
+      <!-- WhatsApp glyph from Simple Icons (CC0, simpleicons.org); a filled shape, so it is drawn with .icon--fill -->
+      <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
       <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5M12 17.2h.01"/></symbol>
     </defs>
   </svg>
@@ -94,7 +136,8 @@
       <div class="header__actions">
         <a class="btn btn--accent btn--sm" href="#demo" data-magnetic data-roll>Book a demo</a>
         <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
-          <i></i><i></i>
+          <span class="burger__label" aria-hidden="true"><span>Menu</span><span>Close</span></span>
+          <span class="burger__icon" aria-hidden="true"><i></i><i></i></span>
         </button>
       </div>
     </div>
@@ -134,7 +177,6 @@
         <canvas class="hero__rings" data-rings aria-hidden="true"></canvas>
 
         <div class="hero__copy" data-hero-copy>
-          <p class="eyebrow hero__eyebrow"><span class="eyebrow__dot"></span>Intelligent cloud POS · Bangladesh nationwide</p>
           <h1 class="hero__title" id="hero-title">
             <span class="ln">The first-ever <span class="nb">POS &amp;</span> Management</span>
             <span class="ln">provider that dares to do</span>
@@ -1025,14 +1067,22 @@
 
             <div class="form__foot">
               <button class="btn btn--accent btn--lg" type="submit" data-magnetic data-roll>Request my demo <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-              <p>Or call <a href="tel:+8801700998877">+880 1700-998877</a> — support desk, seven days.<br>We use these details only to contact you about your demo. See our <a href="#">Privacy Policy</a>.</p>
+              <p>Or call <a href="tel:+8801700998877">+880 1700-998877</a> — support desk, seven days.<br>We use these details only to contact you about your demo. See our <a href="privacy.html">Privacy Policy</a>.</p>
+              <div class="form__fail" data-form-fail role="alert" tabindex="-1" hidden>
+                <b>We couldn’t send your request by email just now.</b>
+                <p>Send the same details on WhatsApp in one tap, or call <a href="tel:+8801700998877">+880 1700-998877</a>.</p>
+                <a class="btn btn--accent btn--sm" data-wa href="#" target="_blank" rel="noopener"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-whatsapp"/></svg>Send on WhatsApp</a>
+              </div>
             </div>
 
             <div class="form__done" data-done role="status" aria-live="polite" hidden>
               <span class="form__done-ico"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
               <h3>Thank you — we’ll call you back.</h3>
               <p>Usually the same working day. In the meantime, gather around twenty of your items and prices — any format works.</p>
-              <button class="link" type="button" data-again>Send another request</button>
+              <div class="form__done-actions">
+                <a class="btn btn--accent" data-wa href="#" target="_blank" rel="noopener"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-whatsapp"/></svg>Continue on WhatsApp</a>
+                <button class="link" type="button" data-again>Send another request</button>
+              </div>
             </div>
           </form>
         </div>
@@ -1071,29 +1121,39 @@
       <div class="footer__col">
         <h4>Reach us</h4>
         <a href="tel:+8801700998877"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>+880 1700-998877</a>
+        <a href="https://wa.me/8801700998877" target="_blank" rel="noopener"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
         <a href="mailto:hello@coreagency.com.bd"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>hello@coreagency.com.bd</a>
         <p>Support desk · seven days</p>
       </div>
     </div>
     <div class="footer__word" aria-hidden="true" data-footer-word>Core Agency</div>
     <div class="footer__bar">
-      <span>© 2026 Core Agency Ltd. All rights reserved.</span>
-      <span class="footer__legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></span>
+      <span>© <span data-year>2026</span> Core Agency Ltd. All rights reserved.</span>
+      <span class="footer__legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></span>
       <button class="totop" type="button" data-totop>Back to top <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></button>
     </div>
   </footer>
 
+  <!-- ============ Floating chat button ============ -->
+  <a class="fab" data-fab href="https://wa.me/8801700998877" target="_blank" rel="noopener" aria-label="Chat with Core Agency on WhatsApp">
+    <span class="fab__label" aria-hidden="true">Chat with us</span>
+    <span class="fab__btn"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-whatsapp"/></svg></span>
+  </a>
+
   <script>
     /* If the animation libraries are blocked or offline, fall back to the static page. */
     window.addEventListener('load', function () {
+      var y = document.querySelector('[data-year]');
+      if (y) y.textContent = new Date().getFullYear();
       if (!window.gsap || !window.ScrollTrigger) {
         document.documentElement.classList.remove('js', 'is-loading');
       }
     });
   </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script defer src="assets/vendor/gsap.min.js"></script>
+  <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="assets/vendor/lenis.min.js"></script>
+  <script defer src="assets/js/config.js"></script>
   <script defer src="assets/js/core.js"></script>
   <script defer src="assets/js/hero.js"></script>
   <script defer src="assets/js/story.js"></script>

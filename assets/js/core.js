@@ -13,16 +13,19 @@
   const CA = (window.CA = window.CA || {});
   CA.init = {};
 
-  // The pinned, scroll-scrubbed "desktop" experience is for mouse / trackpad devices on wide screens.
-  // Touch devices (phones, tablets — even in landscape) keep native scrolling with the lighter layout.
-  const POINTER = '(hover: hover) and (pointer: fine)';
+  // Every screen — desktop, tablet, phone — gets the same pinned, scroll-driven scenes.
+  // Only viewports too short to hold a pinned scene (phones in landscape) fall back to the flowing layout.
+  const ROOM = '(min-height: 520px)';
   CA.mq = {
     motion: '(prefers-reduced-motion: no-preference)',
-    desktop: `(min-width: 1024px) and ${POINTER} and (prefers-reduced-motion: no-preference)`,
-    mobile: `(prefers-reduced-motion: no-preference) and (not ((min-width: 1024px) and ${POINTER}))`,
+    pinned: `(prefers-reduced-motion: no-preference) and ${ROOM}`,
+    flow: `(prefers-reduced-motion: no-preference) and (not ${ROOM})`,
   };
   CA.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   CA.fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  // Mouse / trackpad scrolling is already eased by Lenis, so scrubbed scenes follow it exactly.
+  // Touch scrolling arrives in uneven steps, so scenes catch up over a short half-second instead of jumping.
+  CA.scrub = CA.fine ? true : 0.5;
 
   /* ---------- helpers ---------- */
   CA.$ = (sel, ctx = document) => ctx.querySelector(sel);
@@ -264,6 +267,8 @@
       let dirSmooth = 1;
       let skew = 0;
       let running = false;
+      let lastY = window.scrollY;
+      let touchV = 0; // scroll velocity for touch devices, where there is no Lenis to ask
       const setX = gsap.quickSetter(track, 'x', 'px');
       const setSkew = gsap.quickSetter(track, 'skewX', 'deg');
 
@@ -287,7 +292,10 @@
 
       const tick = (time, delta) => {
         if (!unit) return;
-        const v = CA.lenis ? CA.lenis.velocity : 0;
+        const y = window.scrollY;
+        touchV += (y - lastY - touchV) * 0.2;
+        lastY = y;
+        const v = CA.lenis ? CA.lenis.velocity : touchV;
         const target = v < -0.05 ? -1 : 1;
         dirSmooth += (target - dirSmooth) * 0.06;
         pos -= rowDir * dirSmooth * (38 * (delta / 1000) + Math.abs(v) * 0.55); // 38px/s base drift + scroll boost
@@ -299,7 +307,7 @@
 
       // only drift while the row is actually on screen
       CA.visible(row, (vis) => {
-        if (vis && !running) { running = true; gsap.ticker.add(tick); }
+        if (vis && !running) { running = true; lastY = window.scrollY; touchV = 0; gsap.ticker.add(tick); }
         else if (!vis && running) { running = false; gsap.ticker.remove(tick); }
       }, { margin: '200px 0px' });
     });
